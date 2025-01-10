@@ -11,7 +11,7 @@ public class Bdd {
         String dbUrl = dotenv.get("DATABASE_URL");
         String dbUser = dotenv.get("DATABASE_USER");
         String dbPassword = dotenv.get("DATABASE_PASSWORD");
-        Connection my_bdd = DriverManager.getConnection( dbUrl,dbUser,dbPassword);
+        Connection my_bdd = DriverManager.getConnection(dbUrl,dbUser,dbPassword);
         return my_bdd;
     }
 }

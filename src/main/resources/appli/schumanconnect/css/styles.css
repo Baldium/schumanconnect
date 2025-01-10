@@ -1,0 +1,73 @@
+.root{
+    -fx-background-color: #EAEEF4; /* Bleu très foncé */
+
+}
+.side_ankerpane {
+    -fx-background-color: #001F3F; /* Bleu très foncé */
+    -fx-background-insets: 2px; /* Espace entre la bordure et l'intérieur */
+    -fx-border-color: #35A56; /* Couleur de la bordure (vert) */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+    -fx-border-radius: 6px; /* Coins arrondis pour la bordure */
+    -fx-border-style: solid; /* Style de la bordure */
+}
+
+.inner-pane{
+    -fx-background-color: #748CF1; /* Bleu très foncé */
+    -fx-background-insets: 2px; /* Espace entre la bordure et l'intérieur */
+    -fx-border-color: #35A56; /* Couleur de la bordure (vert) */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+    -fx-border-radius: 6px; /* Coins arrondis pour la bordure */
+    -fx-border-style: solid; /* Style de la bordure */
+    -fx-border-color: #748CF1;
+}
+
+.menu_kebab{
+   -fx-background-color: #6780E2; /* Bleu très foncé */
+   -fx-background-insets: 2px; /* Espace entre la bordure et l'intérieur */
+   -fx-border-color: #35A56; /* Couleur de la bordure (vert) */
+   -fx-border-width: 2px; /* Largeur de la bordure */
+   -fx-border-radius: 6px; /* Coins arrondis pour la bordure */
+   -fx-border-style: solid; /* Style de la bordure */
+   -fx-border-color: #748CF1;
+}
+
+.btn_home{
+    -fx-background-color: #000000; /* Violet foncé */
+   -fx-background-insets: 2px; /* Espace entre la bordure et l'intérieur */
+   -fx-border-color: #35A56; /* Couleur de la bordure (vert) */
+   -fx-border-width: 2px; /* Largeur de la bordure */
+   -fx-border-radius: 10px; /* Coins arrondis pour la bordure */
+   -fx-border-style: solid; /* Style de la bordure */
+   -fx-border-color: #303551;
+}
+
+/* Style complet dans la classe .btn_menu_bar */
+
+.btn_menu_bar {
+    /* Style global pour le MenuBar */
+    -fx-font-family: "Helvetica"; /* Utilisation de Helvetica pour le texte */
+    -fx-font-size: 16px; /* Taille de la police */
+    -fx-font-weight: bold; /* Texte en gras */
+    -fx-text-fill: #FFFFFF; /* Texte en blanc pour contraster avec le fond */
+    -fx-background-color: #001F3F; /* Fond sombre pour le MenuBar */
+}
+
+
+.menu-text-blanc {
+    -fx-text-fill: #FFFFFF; /* Texte en blanc */
+}
+
+.txt_search {
+    -fx-background-color: transparent; /* Fond transparent pour le champ de recherche */
+    -fx-border-color: #3D3D3D; /* Bordure sombre pour l'effet de soulignement */
+    -fx-border-width: 0 0 2px 0; /* Soulignement en bas uniquement */
+    -fx-font-family: "Helvetica", sans-serif; /* Police Helvetica pour un look moderne */
+    -fx-font-size: 14px; /* Taille du texte */
+    -fx-text-fill: #FFFFFF; /* Texte en blanc pour contraster */
+    -fx-padding: 6px 10px; /* Padding interne pour un joli espacement */
+    -fx-prompt-text-fill: #B0B0B0; /* Couleur du texte d'indication (gris clair) */
+    -fx-background-insets: 0, 0, 0, 0; /* Éliminer l'inset de l'arrière-plan */
+    -fx-effect: innershadow(gaussian, #000000, 5, 0.5, 0, 0); /* Ombre interne subtile */
+    -fx-transition: all 0.3s ease-in-out; /* Transition fluide pour les changements */
+}
+
