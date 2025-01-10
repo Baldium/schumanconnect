@@ -1,57 +1,50 @@
-.root{
-    -fx-background-color: #EAEEF4; /* Bleu très foncé */
-
+.root {
+    -fx-background-color: #EAEEF4; /* Bleu très clair */
 }
+
 .side_ankerpane {
     -fx-background-color: #001F3F; /* Bleu très foncé */
     -fx-background-insets: 2px; /* Espace entre la bordure et l'intérieur */
-    -fx-border-color: #35A56; /* Couleur de la bordure (vert) */
+    -fx-border-color: #001F3F; /* Couleur de la bordure (vert) corrigée */
     -fx-border-width: 2px; /* Largeur de la bordure */
     -fx-border-radius: 6px; /* Coins arrondis pour la bordure */
     -fx-border-style: solid; /* Style de la bordure */
 }
 
-.inner-pane{
+.inner-pane {
     -fx-background-color: #748CF1; /* Bleu très foncé */
     -fx-background-insets: 2px; /* Espace entre la bordure et l'intérieur */
-    -fx-border-color: #35A56; /* Couleur de la bordure (vert) */
+    -fx-border-color: #001F3F; /* Couleur de la bordure (vert) corrigée */
     -fx-border-width: 2px; /* Largeur de la bordure */
     -fx-border-radius: 6px; /* Coins arrondis pour la bordure */
     -fx-border-style: solid; /* Style de la bordure */
-    -fx-border-color: #748CF1;
 }
 
-.menu_kebab{
-   -fx-background-color: #6780E2; /* Bleu très foncé */
-   -fx-background-insets: 2px; /* Espace entre la bordure et l'intérieur */
-   -fx-border-color: #35A56; /* Couleur de la bordure (vert) */
-   -fx-border-width: 2px; /* Largeur de la bordure */
-   -fx-border-radius: 6px; /* Coins arrondis pour la bordure */
-   -fx-border-style: solid; /* Style de la bordure */
-   -fx-border-color: #748CF1;
+.menu_kebab {
+    -fx-background-color: #6780E2; /* Bleu très foncé */
+    -fx-background-insets: 2px; /* Espace entre la bordure et l'intérieur */
+    -fx-border-color: #001F3F; /* Couleur de la bordure (vert) corrigée */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+    -fx-border-radius: 6px; /* Coins arrondis pour la bordure */
+    -fx-border-style: solid; /* Style de la bordure */
 }
 
-.btn_home{
+.btn_home {
     -fx-background-color: #000000; /* Violet foncé */
-   -fx-background-insets: 2px; /* Espace entre la bordure et l'intérieur */
-   -fx-border-color: #35A56; /* Couleur de la bordure (vert) */
-   -fx-border-width: 2px; /* Largeur de la bordure */
-   -fx-border-radius: 10px; /* Coins arrondis pour la bordure */
-   -fx-border-style: solid; /* Style de la bordure */
-   -fx-border-color: #303551;
+    -fx-background-insets: 2px; /* Espace entre la bordure et l'intérieur */
+    -fx-border-color: #001F3F; /* Couleur de la bordure (vert) corrigée */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+    -fx-border-radius: 10px; /* Coins arrondis pour la bordure */
+    -fx-border-style: solid; /* Style de la bordure */
 }
-
-/* Style complet dans la classe .btn_menu_bar */
 
 .btn_menu_bar {
-    /* Style global pour le MenuBar */
     -fx-font-family: "Helvetica"; /* Utilisation de Helvetica pour le texte */
     -fx-font-size: 16px; /* Taille de la police */
     -fx-font-weight: bold; /* Texte en gras */
     -fx-text-fill: #FFFFFF; /* Texte en blanc pour contraster avec le fond */
-    -fx-background-color: #001F3F; /* Fond sombre pour le MenuBar */
+    -fx-background-color: #001F3F; /* Fond du MenuBar */
 }
-
 
 .menu-text-blanc {
     -fx-text-fill: #FFFFFF; /* Texte en blanc */
@@ -60,7 +53,7 @@
 .txt_search {
     -fx-background-color: transparent; /* Fond transparent pour le champ de recherche */
     -fx-border-color: #3D3D3D; /* Bordure sombre pour l'effet de soulignement */
-    -fx-border-width: 0 0 2px 0; /* Soulignement en bas uniquement */
+    -fx-border-width: 0 0 0px 0; /* Soulignement en bas uniquement */
     -fx-font-family: "Helvetica", sans-serif; /* Police Helvetica pour un look moderne */
     -fx-font-size: 14px; /* Taille du texte */
     -fx-text-fill: #FFFFFF; /* Texte en blanc pour contraster */
@@ -71,3 +64,72 @@
     -fx-transition: all 0.3s ease-in-out; /* Transition fluide pour les changements */
 }
 
+.btn_parametre {
+    -fx-background-color: transparent; /* Pas de fond pour le bouton paramètre */
+}
+
+.panel_l {
+    -fx-background-color: #748CF1; /* Bleu très foncé */
+    -fx-background-insets: 2px; /* Espace entre la bordure et l'intérieur */
+    -fx-border-color: #001F3F; /* Couleur de la bordure (vert) corrigée */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+    -fx-border-radius: 20px; /* Coins arrondis pour la bordure */
+    -fx-background-radius: 20px; /* Coins arrondis pour l'arrière-plan */
+    -fx-border-style: solid; /* Style de la bordure */
+}
+
+.lbl {
+    -fx-text-fill: #756e6e; /* Couleur gris clair pour le texte */
+}
+
+.label_dossierr_finsih {
+    -fx-text-fill: #FFFFFF; /* Texte en blanc */
+}
+
+.progress_bar {
+    -fx-background-color: red; /* Rouge pour la barre de progression */
+    -fx-background-insets: 2px; /* Espace entre la bordure et l'intérieur */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+    -fx-border-radius: 20px; /* Coins arrondis pour la bordure */
+    -fx-background-radius: 20px; /* Coins arrondis pour l'arrière-plan */
+}
+
+.panel_ll {
+    -fx-background-color: #4A4F6D; /* Bleu-gris foncé */
+    -fx-background-insets: 2px; /* Espace entre la bordure et l'intérieur */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+    -fx-border-radius: 20px; /* Coins arrondis pour la bordure */
+    -fx-background-radius: 20px; /* Coins arrondis pour l'arrière-plan */
+}
+
+.panel_lll {
+    -fx-background-color: #4A4F6D; /* Bleu-gris foncé */
+    -fx-background-insets: 2px; /* Espace entre la bordure et l'intérieur */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+    -fx-border-radius: 20px; /* Coins arrondis pour la bordure */
+    -fx-background-radius: 20px; /* Coins arrondis pour l'arrière-plan */
+}
+
+.panel_llll {
+    -fx-background-color: #353A56; /* Bleu très foncé */
+    -fx-background-insets: 2px; /* Espace entre la bordure et l'intérieur */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+    -fx-border-radius: 20px; /* Coins arrondis pour la bordure */
+    -fx-background-radius: 20px; /* Coins arrondis pour l'arrière-plan */
+}
+
+.panel_rdv {
+    -fx-background-color: #3A7D6D; /* Vert dégradé bleu */
+    -fx-background-insets: 2px; /* Espace entre la bordure et l'intérieur */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+    -fx-border-radius: 20px; /* Coins arrondis pour la bordure */
+    -fx-background-radius: 20px; /* Coins arrondis pour l'arrière-plan */
+}
+
+.panel_rdv2 {
+    -fx-background-color: #3A7D6D; /* Vert dégradé bleu */
+    -fx-background-insets: 2px; /* Espace entre la bordure et l'intérieur */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+    -fx-border-radius: 20px; /* Coins arrondis pour la bordure */
+    -fx-background-radius: 20px; /* Coins arrondis pour l'arrière-plan */
+}
