@@ -53,6 +53,19 @@
       <version>6.0.0</version> <!-- Essaye une version différente -->
     </dependency>
 
+    <!-- Ajout de la dépendance du Cryptage -->
+    <dependency>
+      <groupId>org.mindrot</groupId>
+      <artifactId>jbcrypt</artifactId>
+      <version>0.4</version>
+    </dependency>
+    <!-- Ajout de la dépendance MySQL JDBC -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.33</version>
+    </dependency>
+
     <!-- Autres dépendances -->
     <dependency>
       <groupId>com.dlsc.formsfx</groupId>
