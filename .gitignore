@@ -2,8 +2,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-!src/.env/
-src/.env
+!.env/
+.env
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml

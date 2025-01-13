@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@./css/login_form.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.RegisterController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@./css/login_form.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.RegisterController">
 
     <left>
         <VBox prefHeight="451.0" prefWidth="122.0" styleClass="left-pane" BorderPane.alignment="CENTER" />
@@ -60,14 +60,18 @@
                         <PasswordField fx:id="mdpInput" styleClass="text-field" />
                     </HBox>
                     <HBox spacing="10" styleClass="input-hbox">
+                        <Label styleClass="input-label" text="Confirmation du mdp:" />
+                        <PasswordField fx:id="mdpInputConfirm" styleClass="text-field" />
+                    </HBox>
+                    <HBox spacing="10" styleClass="input-hbox">
                         <Label styleClass="input-label" text="Rôle:" />
                         <TextField fx:id="roleInput" styleClass="text-field" />
                     </HBox>
-                    <Button fx:id="inscriptionButton" mnemonicParsing="false" onAction="#" styleClass="register-button" text="S'inscrire" />
+                    <Button fx:id="inscriptionButton" mnemonicParsing="false" onAction="#register" styleClass="register-button" text="S'inscrire" />
                     <Label fx:id="errorMessage" styleClass="error-message" text="" />
                 </VBox>
                 <HBox alignment="CENTER" spacing="10">
-                    <Button fx:id="backToLogin" mnemonicParsing="false" onAction="#" styleClass="secondary-button" text="Retour à la connexion" />
+                    <Button fx:id="backToLogin" mnemonicParsing="false" onAction="#SwitchViewLogin" styleClass="secondary-button" text="Retour à la connexion" />
                 </HBox>
             </children>
         </VBox>

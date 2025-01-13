@@ -10,6 +10,7 @@ module appli.schumanconnect {
     requires java.sql;
     requires io.github.cdimascio.dotenv.java;
     requires java.desktop;
+    requires jbcrypt;
     exports appli.schumanconnect.controller;  // Ajouter cette ligne pour exporter le package controller
     opens appli.schumanconnect.controller to javafx.fxml;  // Cette ligne permet de rendre accessible le package au module javafx.fxml
 
