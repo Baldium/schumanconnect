@@ -1,5 +1,4 @@
 module appli.schumanconnect {
-    requires javafx.controls;
     requires javafx.fxml;
 
     requires com.dlsc.formsfx;

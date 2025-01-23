@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="appli.schumanconnect.controller.SecretaryController.ViewDossierController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <!-- Label pour l'ID du Dossier -->
+    <Label fx:id="dossierIdLabel" style="-fx-font-weight: bold;" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10"/>
+
+    <!-- Label pour la Date de Création -->
+    <Label fx:id="dateCreationLabel" AnchorPane.topAnchor="40" AnchorPane.leftAnchor="10"/>
+
+    <!-- Label pour la Filière -->
+    <Label fx:id="filiereLabel" AnchorPane.topAnchor="70" AnchorPane.leftAnchor="10"/>
+
+    <!-- Label pour le Motif de l'Étudiant -->
+    <Label fx:id="motifLabel" AnchorPane.topAnchor="100" AnchorPane.leftAnchor="10"/>
+
+    <!-- Label pour le Statut -->
+    <Label fx:id="statutLabel" AnchorPane.topAnchor="130" AnchorPane.leftAnchor="10"/>
+
+</AnchorPane>
+
+
