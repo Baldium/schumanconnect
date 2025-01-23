@@ -45,7 +45,7 @@
                            </cursor>
                         </ImageView>
                      </children></Pane>
-                  <Button fx:id="btn_home" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="182.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="SchumanConnect" textFill="#1b47d1">
+                  <Button fx:id="btn_home" onAction="#changePageToAllStudent" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="182.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="SchumanConnect" textFill="#1b47d1">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -137,7 +137,7 @@
                         <Blend />
                      </effect>
                   </MenuBar>
-                  <Button fx:id="btn_home1" layoutX="23.0" layoutY="383.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="155.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="Deconnexion" textFill="#1b47d1">
+                  <Button fx:id="btn_home1"  onAction="#logout" layoutX="23.0" layoutY="383.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="155.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="Deconnexion" textFill="#1b47d1">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -239,7 +239,7 @@
                      </image>
                   </ImageView>
                </children></Pane>
-            <Label fx:id="label1" layoutX="35.0" layoutY="134.0" styleClass="lbl" stylesheets="@../css/styles.css" text="Dossiers d'inscription" textFill="#837d7d">
+            <Label fx:id="label1"  layoutX="35.0" layoutY="134.0" styleClass="lbl" stylesheets="@../css/styles.css" text="Dossiers d'inscription" textFill="#837d7d">
                <font>
                   <Font name="Helvetica Bold" size="13.0" />
                </font>
