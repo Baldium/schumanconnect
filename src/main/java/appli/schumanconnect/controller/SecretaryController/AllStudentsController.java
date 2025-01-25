@@ -176,10 +176,29 @@ public class AllStudentsController implements Initializable {
     }
 
     @FXML
+    public void changePageSceneHome(ActionEvent event) throws IOException {
+        ScenePage.switchView("/appli/schumanconnect/homeView/homePage-view.fxml", event);
+    }
+
+    @FXML
     public void logout(ActionEvent event) throws IOException {
         UserConnectedSingleton.getInstance().logout();
         ScenePage.switchView("/appli/schumanconnect/login-view.fxml", event);
     }
+
+    @FXML
+    public void changePageSceneDossierInscription(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/secretaryView/allStudents.fxml"));
+        Parent root = loader.load();
+        MenuItem menuItem = (MenuItem) event.getSource();
+        Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
 }
 
 

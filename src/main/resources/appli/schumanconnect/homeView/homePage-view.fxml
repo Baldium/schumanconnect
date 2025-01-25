@@ -45,7 +45,7 @@
                            </cursor>
                         </ImageView>
                      </children></Pane>
-                  <Button fx:id="btn_home" onAction="#changePageToAllStudent" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="182.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="SchumanConnect" textFill="#1b47d1">
+                  <Button fx:id="btn_home" onAction="#changePageSceneHome" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="182.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="SchumanConnect" textFill="#1b47d1">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -62,7 +62,7 @@
                       <Menu id="btn_menu_bar" fx:id="btn_menu_bar" mnemonicParsing="false" style="-fx-text-fill: transparent;" styleClass="btn_menu_bar" text="Étudiants">
                         <items>
                               <MenuItem mnemonicParsing="false" text="Créer un étudiant" />
-                          <MenuItem mnemonicParsing="false" text="Dossiers d'inscription" />
+                          <MenuItem mnemonicParsing="false" text="Dossiers d'inscription" onAction="#changePageSceneDossierInscription" />
                         </items>
                            <graphic>
                               <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
