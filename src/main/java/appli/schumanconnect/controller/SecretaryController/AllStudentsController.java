@@ -113,6 +113,8 @@ public class AllStudentsController implements Initializable {
 
             DossierTableView.setItems(dossierObservableList);
 
+
+
             // Debut de la barre de recherche
             FilteredList<Dossier> filteredData = new FilteredList<>(dossierObservableList, b -> true);
 
@@ -198,6 +200,17 @@ public class AllStudentsController implements Initializable {
         stage.show();
     }
 
+    @FXML
+    public void changePageSceneAddStudent(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/secretaryView/addStudents.fxml"));
+        Parent root = loader.load();
+        MenuItem menuItem = (MenuItem) event.getSource();
+        Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+    }
 
 }
 
@@ -423,4 +436,5 @@ public class AllStudentsController implements Initializable {
         UserConnectedSingleton.getInstance().logout();
         ScenePage.switchView("/appli/schumanconnect/login-view.fxml", event);
     }
-}*/
+}
+*/

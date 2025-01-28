@@ -62,7 +62,7 @@
                     <menus>
                         <Menu id="btn_menu_bar" fx:id="btn_menu_bar" mnemonicParsing="false" style="-fx-text-fill: transparent;" styleClass="btn_menu_bar" text="Étudiants">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Créer un étudiant" />
+                                <MenuItem mnemonicParsing="false" text="Créer un étudiant" onAction="#changePageSceneAddStudent" />
                                 <MenuItem mnemonicParsing="false" text="Dossiers d'inscription" onAction="#changePageSceneDossierInscription" />
                             </items>
                             <graphic>

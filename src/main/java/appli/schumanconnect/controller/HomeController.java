@@ -1,6 +1,7 @@
 package appli.schumanconnect.controller;
 
 import appli.schumanconnect.model.User;
+import appli.schumanconnect.repository.HomeRepository;
 import appli.schumanconnect.utils.ScenePage;
 import appli.schumanconnect.utils.UserConnectedSingleton;
 import javafx.event.ActionEvent;
@@ -16,12 +17,22 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
 
     @FXML
     private Label labelName;
+
+    @FXML
+    private Label label_dossierr_finsih;
+
+    @FXML
+    private Label label_dossierr_wait;
+
+    @FXML
+    private Label label_dossierr_wait1;
 
 
     UserConnectedSingleton UserConnected = UserConnectedSingleton.getInstance();
@@ -33,6 +44,24 @@ public class HomeController implements Initializable {
             labelName.setText("Bienvenue " + user.getPrenom() + " " + user.getNom() + " !");
         else
             labelName.setText("Bienvenue !");
+
+        try {
+            label_dossierr_finsih.setText(String.valueOf(HomeRepository.nbDossierTermine()));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            label_dossierr_wait.setText(String.valueOf(HomeRepository.nbDossierAttente()));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            label_dossierr_wait1.setText(String.valueOf(HomeRepository.nbDossierRejete()));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -50,6 +79,18 @@ public class HomeController implements Initializable {
     @FXML
     public void changePageSceneDossierInscription(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/secretaryView/allStudents.fxml"));
+        Parent root = loader.load();
+        MenuItem menuItem = (MenuItem) event.getSource();
+        Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void changePageSceneAddStudent(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/secretaryView/addStudents.fxml"));
         Parent root = loader.load();
         MenuItem menuItem = (MenuItem) event.getSource();
         Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
