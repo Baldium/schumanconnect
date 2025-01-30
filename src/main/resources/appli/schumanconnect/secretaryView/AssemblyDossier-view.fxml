@@ -1,18 +1,266 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="appli.schumanconnect.controller.SecretaryController.AssemblyDossierController"
-            prefHeight="400.0" prefWidth="600.0">
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.SecretaryController.AssemblyDossierController">
+    <children>
+        <VBox prefHeight="602.0" prefWidth="199.0">
+            <children>
+                <AnchorPane fx:id="c" prefHeight="602.0" prefWidth="248.0" styleClass="side_ankerpane" stylesheets="@../css/styles.css">
+                    <children>
+                        <Pane fx:id="inner_pane" layoutX="13.0" layoutY="14.0" prefHeight="64.0" prefWidth="176.0" styleClass="inner-pane" stylesheets="@../css/styles.css">
+                            <children>
+                                <ImageView fitHeight="78.0" fitWidth="133.0" layoutX="10.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../assets/medias/Logo_Schuman_Connect.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="menu_kebab" fitHeight="42.0" fitWidth="34.0" layoutX="130.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_kebab">
+                                    <image>
+                                        <Image url="@../assets/medias/menu_kebab.png" />
+                                    </image>
+                                    <effect>
+                                        <Blend opacity="0.18" />
+                                    </effect>
+                                    <cursor>
+                                        <Cursor fx:constant="MOVE" />
+                                    </cursor>
+                                </ImageView>
+                            </children></Pane>
+                        <Button fx:id="btn_home" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" onAction="#changePageSceneHome" prefHeight="45.0" prefWidth="182.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="SchumanConnect" textFill="#1b47d1">
+                            <graphic>
+                                <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../assets/medias/home_icone.jpg" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="Helvetica Bold" size="13.0" />
+                            </font>
+                        </Button>
+                        <MenuBar layoutX="9.0" layoutY="162.0" prefHeight="45.0" prefWidth="165.0" style="-fx-background-color: transparent;" styleClass="btn_menu_bar" stylesheets="@../css/styles.css">
+                            <menus>
+                                <Menu id="btn_menu_bar" fx:id="btn_menu_bar" mnemonicParsing="false" style="-fx-text-fill: transparent;" styleClass="btn_menu_bar" text="Étudiants">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#changePageSceneAddStudent" text="Créer un étudiant" />
+                                        <MenuItem mnemonicParsing="false" onAction="#changePageSceneDossierInscription" text="Dossiers d'inscription" />
+                                    </items>
+                                    <graphic>
+                                        <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../assets/medias/icone_students.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Menu>
+                            </menus>
+                            <effect>
+                                <Blend />
+                            </effect>
+                        </MenuBar>
+                        <MenuBar fx:id="btn_menu_bar1" layoutX="7.0" layoutY="209.0" prefHeight="45.0" prefWidth="187.0" styleClass="btn_menu_bar" stylesheets="@../css/styles.css">
+                            <menus>
+                                <Menu mnemonicParsing="false" text="Rendez-vous">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Ajouter un rendez-vous" />
+                                        <MenuItem mnemonicParsing="false" text="Calendrier" />
+                                    </items>
+                                    <graphic>
+                                        <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../assets/medias/rdv.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Menu>
+                            </menus>
+                            <effect>
+                                <Blend />
+                            </effect>
+                        </MenuBar>
+                        <MenuBar fx:id="btn_menu_bar2" layoutX="11.0" layoutY="256.0" prefHeight="45.0" prefWidth="176.0" styleClass="btn_menu_bar" stylesheets="@../css/styles.css">
+                            <menus>
+                                <Menu mnemonicParsing="false" style="-fx-text-fill: #FFFFFF;" styleClass="-fx-text-fill: #FFFFFF;" text="Fournitures">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Demander des fournitures" />
+                                        <MenuItem mnemonicParsing="false" text="Gestion des stocks" />
+                                    </items>
+                                    <graphic>
+                                        <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../assets/medias/fourniture.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Menu>
+                            </menus>
+                            <effect>
+                                <Blend />
+                            </effect>
+                        </MenuBar>
+                        <MenuBar fx:id="btn_menu_bar21" layoutX="11.0" layoutY="308.0" prefHeight="45.0" prefWidth="165.0" styleClass="btn_menu_bar" stylesheets="@../css/styles.css">
+                            <menus>
+                                <Menu mnemonicParsing="false" style="-fx-text-fill: #FFFFFF;" styleClass="-fx-text-fill: #FFFFFF;" text="Historique">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Historique" />
+                                        <MenuItem mnemonicParsing="false" text="Journal des connexions" />
+                                    </items>
+                                    <graphic>
+                                        <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../assets/medias/history.jpg" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Menu>
+                            </menus>
+                            <effect>
+                                <Blend />
+                            </effect>
+                        </MenuBar>
+                        <Button fx:id="btn_home1" layoutX="23.0" layoutY="383.0" mnemonicParsing="false" onAction="#logout" prefHeight="42.0" prefWidth="155.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="Deconnexion" textFill="#1b47d1">
+                            <graphic>
+                                <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../assets/medias/logout.jpg" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="Helvetica Bold" size="13.0" />
+                            </font>
+                        </Button>
+                        <ImageView fitHeight="114.0" fitWidth="102.0" layoutX="44.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/medias/prof.jpg" />
+                            </image>
+                        </ImageView>
+                    </children>
+                    <effect>
+                        <Glow />
+                    </effect></AnchorPane>
+            </children>
+        </VBox>
+        <Pane prefHeight="602.0" prefWidth="664.0">
+            <children>
+                <Pane layoutX="-1.0" layoutY="8.0" prefHeight="55.0" prefWidth="664.0">
+                    <children>
+                        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="540.0" layoutY="12.0" mnemonicParsing="false" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
+                        <ImageView fitHeight="33.0" fitWidth="24.0" layoutX="555.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/medias/parametre_icone.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="604.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/medias/profil.png" />
+                            </image>
+                        </ImageView>
+                        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="594.0" layoutY="8.0" minWidth="53.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="53.0" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
+                        <Label layoutX="86.0" layoutY="10.0" text="SchumanConnect">
+                            <font>
+                                <Font name="Avenir Black Oblique" size="25.0" />
+                            </font></Label>
+                        <ImageView fitHeight="78.0" fitWidth="102.0" layoutX="8.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/medias/Logo_Schuman_Connect.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+                <Label fx:id="label1" layoutX="10.0" layoutY="154.0" styleClass="lbl" stylesheets="@../css/styles.css" text="Creation du dossier de untel" textFill="#837d7d">
+                    <font>
+                        <Font name="Helvetica Bold Oblique" size="16.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="234.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/medias/dossier.png" />
+                    </image>
+                </ImageView>
+                        <Button fx:id="btn_submit" layoutX="17.0" layoutY="301.0" onAction="#addStudent" prefHeight="37.0" prefWidth="157.0" style="-fx-background-color: linear-gradient(to bottom, #4CAF50, #2E7D32);                                        -fx-text-fill: white;                                        -fx-font-size: 18px;                                        -fx-font-weight: bold;                                        -fx-border-color: #388E3C;                                        -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0, 0, 5);                                        -fx-cursor: hand;" text="Créer le dossier" />
+                <Pane fx:id="pane_color" layoutX="20.0" layoutY="66.0" prefHeight="59.0" prefWidth="619.0" style="-fx-background-color: #003366; -fx-border-radius: 10px; -fx-background-radius: 10px;" />
 
-    <Label fx:id="StudentIdLabel" style="-fx-font-weight: bold;" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10"/>
+                <!-- Étiquette pour l'état du dossier -->
+                <Label layoutX="9.0" layoutY="263.0" prefHeight="20.0" prefWidth="140.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="📌 État du dossier :" />
+                <!-- HBox pour organiser les boutons radio -->
+                <HBox layoutX="183.0" layoutY="264.0" spacing="15.0">
+                    <RadioButton fx:id="etatEnAttente" text="En attente" />
+                    <RadioButton fx:id="etatRefuse" text="Refusé" />
+                    <RadioButton fx:id="etatAccepte" text="Accepté" />
+                </HBox>
 
+                <!-- Étiquette pour la motivation -->
+                <Label layoutX="9.0" layoutY="233.0" prefHeight="20.0" prefWidth="216.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="📝 Motivation de l'étudiant :" />
+                <!-- Zone de texte pour la motivation (limitée en caractères) -->
+                <TextArea fx:id="motivationField" layoutX="200.0" layoutY="224.0" prefHeight="33.0" prefWidth="400.0" promptText="Expliquez votre motivation en quelques lignes..." wrapText="true" />
 
+                <!-- Étiquette pour la filière d'intérêt -->
+                <Label layoutX="10.0" layoutY="196.0" prefHeight="20.0" prefWidth="149.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="🎓 Filière d'intérêt :" />
+                <!-- Menu déroulant pour le choix de la filière -->
+                <ComboBox fx:id="filiereComboBox" layoutX="186.0" layoutY="193.0" prefWidth="400.0">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="BTS SIO SLAM" />
+                            <String fx:value="BTS SIO SISR" />
+                            <String fx:value="BTS Commerce International" />
+                            <String fx:value="BTS Gestion PME" />
+                            <String fx:value="BTS Tourisme" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            <Label layoutX="31.0" layoutY="353.0" text="L etudiant son nom et prenom">
+               <font>
+                  <Font name="Avenir Black Oblique" size="25.0" />
+               </font>
+            </Label>
+                <Pane layoutX="30.0" layoutY="390.0" prefHeight="150.0" prefWidth="560.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-color: #003366; -fx-border-width: 2; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);">
 
-</AnchorPane>
+                    <!-- VBox pour organiser les informations de l'étudiant -->
+                    <VBox layoutX="20.0" layoutY="15.0" spacing="10.0">
+
+                        <HBox spacing="10.0">
+                            <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #003366;" text="📧 Email :" />
+                            <Label fx:id="emailLabel" style="-fx-font-size: 14;" text="etudiant@mail.com" />
+                        </HBox>
+
+                        <HBox spacing="10.0">
+                            <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #003366;" text="📞 Téléphone :" />
+                            <Label fx:id="telephoneLabel" style="-fx-font-size: 14;" text="+33 6 12 34 56 78" />
+                        </HBox>
+
+                        <HBox spacing="10.0">
+                            <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #003366;" text="🏠 Adresse :" />
+                            <Label fx:id="adresseLabel" style="-fx-font-size: 14;" text="123, Rue de l'Université, Paris" />
+                        </HBox>
+
+                        <HBox spacing="10.0">
+                            <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #003366;" text="🎓 Dernier diplôme :" />
+                            <Label fx:id="diplomeLabel" style="-fx-font-size: 14;" text="Baccalauréat Scientifique" />
+                        </HBox>
+
+                    </VBox>
+                </Pane>
+            </children></Pane>
+            </children>
+</HBox>
