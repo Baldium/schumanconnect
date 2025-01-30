@@ -70,4 +70,61 @@ public class HomeRepository {
             throw new RuntimeException(e);
         }
     }
+
+    public static double pourcentageDossierTermine() throws SQLException {
+        Connection my_bdd = Bdd.my_bdd();
+
+        try {
+            PreparedStatement reqNbDossierTermine = my_bdd.prepareStatement(
+                    "SELECT (COUNT(CASE WHEN statut = 1 THEN 1 END) * 100.0 / COUNT(*)) AS pourcentage_valide FROM `dossiers`");
+
+            ResultSet data = reqNbDossierTermine.executeQuery();
+            if (data.next()) {
+                return data.getDouble("pourcentage_valide");
+            } else {
+                return 0.0;
+            }
+        } catch (Exception e) {
+            FlashMessage.show("Erreur : " + e.getMessage(), Alert.AlertType.ERROR);
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static double pourcentageDossierAttente() throws SQLException {
+        Connection my_bdd = Bdd.my_bdd();
+
+        try {
+            PreparedStatement reqNbDossierAttente = my_bdd.prepareStatement(
+                    "SELECT (COUNT(CASE WHEN statut = 2 THEN 1 END) * 100.0 / COUNT(*)) AS pourcentage_attente FROM `dossiers`");
+
+            ResultSet data = reqNbDossierAttente.executeQuery();
+            if (data.next()) {
+                return data.getDouble("pourcentage_attente");
+            } else {
+                return 0.0;
+            }
+        } catch (Exception e) {
+            FlashMessage.show("Erreur : " + e.getMessage(), Alert.AlertType.ERROR);
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static double pourcentageDossierRejete() throws SQLException {
+        Connection my_bdd = Bdd.my_bdd();
+
+        try {
+            PreparedStatement reqNbDossierRejete = my_bdd.prepareStatement(
+                    "SELECT (COUNT(CASE WHEN statut = 0 THEN 1 END) * 100.0 / COUNT(*)) AS pourcentage_rejete FROM `dossiers`");
+
+            ResultSet data = reqNbDossierRejete.executeQuery();
+            if (data.next()) {
+                return data.getDouble("pourcentage_rejete");
+            } else {
+                return 0.0;
+            }
+        } catch (Exception e) {
+            FlashMessage.show("Erreur : " + e.getMessage(), Alert.AlertType.ERROR);
+            throw new RuntimeException(e);
+        }
+    }
 }

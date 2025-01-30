@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.ProgressBar?>
 <?import com.gluonhq.charm.glisten.control.TextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
@@ -9,6 +8,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
@@ -45,7 +45,7 @@
                            </cursor>
                         </ImageView>
                      </children></Pane>
-                  <Button fx:id="btn_home" onAction="#changePageSceneHome" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="182.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="SchumanConnect" textFill="#1b47d1">
+                  <Button fx:id="btn_home" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" onAction="#changePageSceneHome" prefHeight="45.0" prefWidth="182.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="SchumanConnect" textFill="#1b47d1">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -61,8 +61,8 @@
                     <menus>
                       <Menu id="btn_menu_bar" fx:id="btn_menu_bar" mnemonicParsing="false" style="-fx-text-fill: transparent;" styleClass="btn_menu_bar" text="Étudiants">
                         <items>
-                           <MenuItem mnemonicParsing="false" text="Créer un étudiant" onAction="#changePageSceneAddStudent"/>
-                           <MenuItem mnemonicParsing="false" text="Dossiers d'inscription" onAction="#changePageSceneDossierInscription" />
+                           <MenuItem mnemonicParsing="false" onAction="#changePageSceneAddStudent" text="Créer un étudiant" />
+                           <MenuItem mnemonicParsing="false" onAction="#changePageSceneDossierInscription" text="Dossiers d'inscription" />
                         </items>
                            <graphic>
                               <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
@@ -137,7 +137,7 @@
                         <Blend />
                      </effect>
                   </MenuBar>
-                  <Button fx:id="btn_home1"  onAction="#logout" layoutX="23.0" layoutY="383.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="155.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="Deconnexion" textFill="#1b47d1">
+                  <Button fx:id="btn_home1" layoutX="23.0" layoutY="383.0" mnemonicParsing="false" onAction="#logout" prefHeight="42.0" prefWidth="155.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="Deconnexion" textFill="#1b47d1">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -221,25 +221,25 @@
                         <Font name="Helvetica Bold" size="23.0" />
                      </font>
                   </Label>
-                  <Label  layoutX="8.0" layoutY="57.0" prefHeight="20.0" prefWidth="133.0" styleClass="label_dossierr_finsih" stylesheets="@../css/styles.css" text="Dossier terminés" textFill="WHITE">
+                  <Label layoutX="8.0" layoutY="57.0" prefHeight="20.0" prefWidth="133.0" styleClass="label_dossierr_finsih" stylesheets="@../css/styles.css" text="Dossier terminés" textFill="WHITE">
                      <font>
                         <Font name="Helvetica" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="16.0" layoutY="145.0" prefHeight="20.0" prefWidth="102.0" style="-fx-text-fill: #372243;" styleClass="lbl" stylesheets="@../css/styles.css" text="Complété : 100%" textFill="#37224375">
+                  <Label fx:id="progressBarFinish" layoutX="16.0" layoutY="145.0" prefHeight="20.0" prefWidth="102.0" style="-fx-text-fill: #372243;" styleClass="lbl" stylesheets="@../css/styles.css" text="Complété : 100%" textFill="#37224375">
                      <font>
                         <Font name="Helvetica" size="13.0" />
                      </font>
                   </Label>
-                  <ProgressBar fx:id="progress_bar" layoutX="12.0" layoutY="165.0" prefHeight="15.0" prefWidth="109.0" progress="1.0" style="-fx-border-color: white;" styleClass="progress_bar" stylesheets="@../css/styles.css" />
-                  <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="70.0" layoutY="20.0" mnemonicParsing="false" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
+                  <ProgressBar fx:id="progressBarFinish2" layoutX="12.0" layoutY="165.0" prefHeight="15.0" prefWidth="109.0" progress="1.0" style="-fx-border-color: white;" styleClass="progress_bar" stylesheets="@../css/styles.css" />
+                  <Button fx:id="button_dossier1" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="70.0" layoutY="7.0" mnemonicParsing="false" onAction="#changePageSceneDossierInscriptionButton" prefHeight="55.0" prefWidth="78.0" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
                   <ImageView fitHeight="40.0" fitWidth="51.0" layoutX="93.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/medias/dossier_fini.png" />
                      </image>
                   </ImageView>
                </children></Pane>
-            <Label fx:id="label1"  layoutX="35.0" layoutY="134.0" styleClass="lbl" stylesheets="@../css/styles.css" text="Dossiers d'inscription" textFill="#837d7d">
+            <Label fx:id="label1" layoutX="35.0" layoutY="134.0" styleClass="lbl" stylesheets="@../css/styles.css" text="Dossiers d'inscription" textFill="#837d7d">
                <font>
                   <Font name="Helvetica Bold" size="13.0" />
                </font>
@@ -256,13 +256,13 @@
                         <Font name="Helvetica" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="dossier_cours" layoutX="16.0" layoutY="145.0" prefHeight="20.0" prefWidth="102.0" style="-fx-text-fill: #372243;" styleClass="lbl" stylesheets="@../css/styles.css" text="Complété : 47%" textFill="#37224375">
+                  <Label fx:id="progressBarWait" layoutX="16.0" layoutY="145.0" prefHeight="20.0" prefWidth="102.0" style="-fx-text-fill: #372243;" styleClass="lbl" stylesheets="@../css/styles.css" text="Complété : 47%" textFill="#37224375">
                      <font>
                         <Font name="Helvetica" size="13.0" />
                      </font>
                   </Label>
-                  <ProgressBar fx:id="progress_bar1" layoutX="12.0" layoutY="165.0" prefHeight="15.0" prefWidth="109.0" progress="0.47" style="-fx-border-color: white;" styleClass="progress_bar" stylesheets="@../css/styles.css" />
-                  <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="79.0" layoutY="19.0" mnemonicParsing="false" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
+                  <ProgressBar fx:id="progressBarAttente2" layoutX="12.0" layoutY="165.0" prefHeight="15.0" prefWidth="109.0" progress="0.47" style="-fx-border-color: white;" styleClass="progress_bar" stylesheets="@../css/styles.css" />
+                  <Button fx:id="button_dossier2" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="62.0" layoutY="-2.0" mnemonicParsing="false" onAction="#changePageSceneDossierInscriptionButton" prefHeight="70.0" prefWidth="84.0" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
                   <ImageView fitHeight="40.0" fitWidth="51.0" layoutX="87.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/medias/dossier_cours.png" />
@@ -282,13 +282,13 @@
                         <Font name="Helvetica" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="dossier_cours1" layoutX="16.0" layoutY="145.0" prefHeight="20.0" prefWidth="102.0" style="-fx-text-fill: #372243;" styleClass="lbl" stylesheets="@../css/styles.css" text="Complété : 77%" textFill="#37224375">
+                  <Label fx:id="progressBarReject" layoutX="16.0" layoutY="145.0" prefHeight="20.0" prefWidth="102.0" style="-fx-text-fill: #372243;" styleClass="lbl" stylesheets="@../css/styles.css" text="Complété : 77%" textFill="#37224375">
                      <font>
                         <Font name="Helvetica" size="13.0" />
                      </font>
                   </Label>
-                  <ProgressBar fx:id="progress_bar11" layoutX="12.0" layoutY="165.0" prefHeight="15.0" prefWidth="109.0" progress="0.72" style="-fx-border-color: white;" styleClass="progress_bar" stylesheets="@../css/styles.css" />
-                  <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="75.0" layoutY="12.0" mnemonicParsing="false" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
+                  <ProgressBar fx:id="progressBarReject2" layoutX="12.0" layoutY="165.0" prefHeight="15.0" prefWidth="109.0" progress="0.72" style="-fx-border-color: white;" styleClass="progress_bar" stylesheets="@../css/styles.css" />
+                  <Button fx:id="button_dossier3" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="61.0" layoutY="3.0" mnemonicParsing="false" onAction="#changePageSceneDossierInscriptionButton" prefHeight="49.0" prefWidth="84.0" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
                   <ImageView fitHeight="40.0" fitWidth="34.0" layoutX="94.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/medias/dossier_nonTrzite.png" />

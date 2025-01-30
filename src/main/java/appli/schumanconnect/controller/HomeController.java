@@ -11,8 +11,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -34,6 +36,24 @@ public class HomeController implements Initializable {
     @FXML
     private Label label_dossierr_wait1;
 
+    @FXML
+    private Label progressBarFinish;
+
+    @FXML
+    private Label progressBarWait;
+
+    @FXML
+    private Label progressBarReject;
+
+    @FXML
+    private ProgressBar progressBarFinish2;
+
+    @FXML
+    private ProgressBar progressBarAttente2;
+
+    @FXML
+    private ProgressBar progressBarReject2;
+
 
     UserConnectedSingleton UserConnected = UserConnectedSingleton.getInstance();
 
@@ -45,21 +65,32 @@ public class HomeController implements Initializable {
         else
             labelName.setText("Bienvenue !");
 
+        // Le nombre de dossier fini, en attente et rejetes
         try {
             label_dossierr_finsih.setText(String.valueOf(HomeRepository.nbDossierTermine()));
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        try {
             label_dossierr_wait.setText(String.valueOf(HomeRepository.nbDossierAttente()));
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        try {
             label_dossierr_wait1.setText(String.valueOf(HomeRepository.nbDossierRejete()));
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Les statistiques
+        try {
+            double pourcentageTermine = HomeRepository.pourcentageDossierTermine();
+            double pourcentageAttente = HomeRepository.pourcentageDossierAttente();
+            double pourcentageRejete = HomeRepository.pourcentageDossierRejete();
+
+            progressBarFinish.setText("Complété : " + String.format("%d", (int) pourcentageTermine) + "%");
+            progressBarWait.setText("Complété : " + String.format("%d", (int) pourcentageAttente) + "%");
+            progressBarReject.setText("Complété : " + String.format("%d", (int) pourcentageRejete) + "%");
+
+
+            progressBarFinish2.setProgress(pourcentageTermine / 100.0);
+            progressBarAttente2.setProgress(pourcentageAttente / 100.0);
+            progressBarReject2.setProgress(pourcentageRejete / 100.0);
+
+        } catch (SQLException e) {
+            FlashMessage.show("Erreur : " + e.getMessage(), Alert.AlertType.ERROR);
             throw new RuntimeException(e);
         }
 
@@ -86,6 +117,11 @@ public class HomeController implements Initializable {
 
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    public void changePageSceneDossierInscriptionButton(ActionEvent event) throws IOException{
+        ScenePage.switchView("/appli/schumanconnect/secretaryView/allStudents.fxml",event);
     }
 
     @FXML

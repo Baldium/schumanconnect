@@ -203,7 +203,7 @@
                 <Image url="@../assets/medias/dossier.png" />
             </image>
         </ImageView>
-            <Button fx:id="createDossier" layoutX="618.0" layoutY="75.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="120.0" text="Créer un dossier" />
+            <Button onAction="#changePageSceneCreateDossier" fx:id="createDossier" layoutX="618.0" layoutY="75.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="120.0" text="Créer un dossier" />
             <TableView fx:id="DossierTableView" layoutX="40.0" layoutY="160.0" prefHeight="426.0" prefWidth="705.0">
               <columns>
                 <TableColumn fx:id="idStudentTableColumn" prefWidth="101.89657592773438" text="Numéro" />

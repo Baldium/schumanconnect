@@ -201,6 +201,11 @@ public class AllStudentsController implements Initializable {
     }
 
     @FXML
+    public void changePageSceneCreateDossier(ActionEvent event) throws IOException{
+        ScenePage.switchView("/appli/schumanconnect/secretaryView/createDossier-view.fxml",event);
+    }
+
+    @FXML
     public void changePageSceneAddStudent(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/secretaryView/addStudents.fxml"));
         Parent root = loader.load();
