@@ -117,6 +117,18 @@ public class AddStudentsController {
     }
 
     @FXML
+    public void changePageSceneFichesEtudiantes(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/secretaryView/allFichesStudents-view.fxml"));
+        Parent root = loader.load();
+        MenuItem menuItem = (MenuItem) event.getSource();
+        Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
     public void changePageSceneAddStudent(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/secretaryView/addStudents.fxml"));
         Parent root = loader.load();

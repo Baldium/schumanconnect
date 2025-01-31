@@ -5,6 +5,7 @@ import appli.schumanconnect.utils.Bdd;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DossierRepository {
@@ -19,5 +20,15 @@ public class DossierRepository {
         reqInsertDossier.setInt(5, dossierStudent.getRefEtudiant());
 
         reqInsertDossier.executeUpdate();
+    }
+
+    public static boolean dossierExists(Dossier dossier) throws SQLException {
+        Connection my_bdd = Bdd.my_bdd();
+        PreparedStatement reqVerifDossierExist = my_bdd.prepareStatement("SELECT COUNT(*) FROM dossiers WHERE ref_etudiant = ?");
+        reqVerifDossierExist.setInt(1, dossier.getRefEtudiant());
+        ResultSet data = reqVerifDossierExist.executeQuery();
+            if (data.next() && data.getInt(1) > 0)
+                return true;
+        return false;
     }
 }

@@ -60,6 +60,7 @@
                                     <items>
                                         <MenuItem mnemonicParsing="false" onAction="#changePageSceneAddStudent" text="Créer un étudiant" />
                                         <MenuItem mnemonicParsing="false" onAction="#changePageSceneDossierInscription" text="Dossiers d'inscription" />
+                                        <MenuItem mnemonicParsing="false" onAction="#changePageSceneFichesEtudiantes" text="Fiches étudiantes" />
                                     </items>
                                     <graphic>
                                         <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">

@@ -62,6 +62,7 @@
                                     <items>
                                         <MenuItem mnemonicParsing="false" onAction="#changePageSceneAddStudent" text="Créer un étudiant" />
                                         <MenuItem mnemonicParsing="false" onAction="#changePageSceneDossierInscription" text="Dossiers d'inscription" />
+                                        <MenuItem mnemonicParsing="false" onAction="#changePageSceneFichesEtudiantes" text="Fiches étudiantes" />
                                     </items>
                                     <graphic>
                                         <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
@@ -186,22 +187,17 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Label fx:id="labelName" layoutX="34.0" layoutY="102.0" text="Sélectionnez un étudiant !">
+                <Label fx:id="labelName" layoutX="34.0" layoutY="102.0" text="Fiches Etudiantes">
                     <font>
                         <Font name="Helvetica Bold" size="24.0" />
                     </font>
                 </Label>
-                <Label fx:id="label1" layoutX="35.0" layoutY="134.0" styleClass="lbl" stylesheets="@../css/styles.css" text="Dossiers d'inscription" textFill="#837d7d">
+                <Label fx:id="label1" layoutX="35.0" layoutY="134.0" styleClass="lbl" stylesheets="@../css/styles.css" textFill="#837d7d">
                     <font>
                         <Font name="Helvetica Bold" size="13.0" />
                     </font>
                 </Label>
-                <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="174.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../assets/medias/dossier.png" />
-                    </image>
-                </ImageView>
-                <Button onAction="#changePageSceneAddStudentButton" layoutX="402.0" layoutY="104.0" mnemonicParsing="false" style="-fx-background-color: #1A237E; -fx-font-size: 14px;  -fx-background-radius: 8px; -fx-padding: 8px 16px;" text="Aucun étudiant trouvé. Créez-en un !" textFill="WHITE">
+                <Button layoutX="402.0" layoutY="104.0" mnemonicParsing="false" onAction="#changePageSceneAddStudentButton" style="-fx-background-color: #1A237E; -fx-font-size: 14px;  -fx-background-radius: 8px; -fx-padding: 8px 16px;" text="Aucun étudiant trouvé. Créez-en un !" textFill="WHITE">
                <font>
                   <Font name="Al Bayan Bold" size="13.0" />
                </font></Button>
@@ -211,14 +207,13 @@
                   <Image url="@../assets/medias/search_bar.png" />
                </image>
             </ImageView>
-            <TableView fx:id="StudentTableView" layoutX="35.0" layoutY="218.0" prefHeight="349.0" prefWidth="585.0"
-                       style="-fx-border-color: white; -fx-border-radius: 8px; -fx-padding: 5px;">
+            <TableView fx:id="StudentTableView" layoutX="35.0" layoutY="218.0" prefHeight="349.0" prefWidth="585.0" style="-fx-border-color: white; -fx-border-radius: 8px; -fx-padding: 5px;">
                 <columns>
-                    <TableColumn fx:id="nomTableColumn" prefWidth="117.0" text="Nom" style="-fx-alignment: CENTER; -fx-font-weight: bold; -fx-background-color: #3949AB; -fx-text-fill: white;" />
-                    <TableColumn fx:id="prenomTableColumn" prefWidth="99.0" text="Prenom" style="-fx-alignment: CENTER; -fx-font-weight: bold; -fx-background-color: #3949AB; -fx-text-fill: white;" />
-                    <TableColumn fx:id="mailTableColumn" prefWidth="98.0" text="Mail" style="-fx-alignment: CENTER; -fx-font-weight: bold; -fx-background-color: #3949AB; -fx-text-fill: white;" />
-                    <TableColumn fx:id="telTableColumn" prefWidth="112.0" text="Telephone" style="-fx-alignment: CENTER; -fx-font-weight: bold; -fx-background-color: #3949AB; -fx-text-fill: white;" />
-                    <TableColumn fx:id="lastDiplomeTableColumn" prefWidth="158.0" text="Dernier Diplome" style="-fx-alignment: CENTER; -fx-font-weight: bold; -fx-background-color: #3949AB; -fx-text-fill: white;" />
+                    <TableColumn fx:id="nomTableColumn" prefWidth="117.0" style="-fx-alignment: CENTER; -fx-font-weight: bold; -fx-background-color: #3949AB; -fx-text-fill: white;" text="Nom" />
+                    <TableColumn fx:id="prenomTableColumn" prefWidth="99.0" style="-fx-alignment: CENTER; -fx-font-weight: bold; -fx-background-color: #3949AB; -fx-text-fill: white;" text="Prenom" />
+                    <TableColumn fx:id="mailTableColumn" prefWidth="98.0" style="-fx-alignment: CENTER; -fx-font-weight: bold; -fx-background-color: #3949AB; -fx-text-fill: white;" text="Mail" />
+                    <TableColumn fx:id="telTableColumn" prefWidth="112.0" style="-fx-alignment: CENTER; -fx-font-weight: bold; -fx-background-color: #3949AB; -fx-text-fill: white;" text="Telephone" />
+                    <TableColumn fx:id="lastDiplomeTableColumn" prefWidth="158.0" style="-fx-alignment: CENTER; -fx-font-weight: bold; -fx-background-color: #3949AB; -fx-text-fill: white;" text="Dernier Diplome" />
                 </columns>
             </TableView>
             </children></Pane>

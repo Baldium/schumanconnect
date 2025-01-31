@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
@@ -21,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.SecretaryController.AssemblyDossierController">
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.SecretaryController.AllFichesStudentsController">
     <children>
         <VBox prefHeight="602.0" prefWidth="199.0">
             <children>
@@ -189,82 +187,41 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Label fx:id="getNameLabel" layoutX="10.0" layoutY="154.0" styleClass="lbl" stylesheets="@../css/styles.css" text="Creation du dossier de untel" textFill="#837d7d">
+                <Label fx:id="labelName" layoutX="34.0" layoutY="102.0" text="Sélectionnez un étudiant !">
                     <font>
-                        <Font name="Helvetica Bold Oblique" size="16.0" />
+                        <Font name="Helvetica Bold" size="24.0" />
                     </font>
                 </Label>
-                <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="243.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+                <Label fx:id="label1" layoutX="35.0" layoutY="134.0" styleClass="lbl" stylesheets="@../css/styles.css" text="Dossiers d'inscription" textFill="#837d7d">
+                    <font>
+                        <Font name="Helvetica Bold" size="13.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="174.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../assets/medias/dossier.png" />
                     </image>
                 </ImageView>
-                        <Button fx:id="btn_submit" layoutX="17.0" layoutY="301.0" onAction="#addStudent" prefHeight="37.0" prefWidth="157.0" style="-fx-background-color: linear-gradient(to bottom, #4CAF50, #2E7D32);                                        -fx-text-fill: white;                                        -fx-font-size: 18px;                                        -fx-font-weight: bold;                                        -fx-border-color: #388E3C;                                        -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0, 0, 5);                                        -fx-cursor: hand;" text="Créer le dossier" />
-                <Pane fx:id="pane_color" layoutX="20.0" layoutY="66.0" prefHeight="59.0" prefWidth="619.0" style="-fx-background-color: #003366; -fx-border-radius: 10px; -fx-background-radius: 10px;">
-               <children>
-                  <Label fx:id="messageErreur" layoutX="14.0" layoutY="6.0" textFill="#f80505" />
-               </children></Pane>
-
-                <!-- Étiquette pour l'état du dossier -->
-                <Label layoutX="9.0" layoutY="263.0" prefHeight="20.0" prefWidth="140.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="📌 État du dossier :" />
-                <!-- HBox pour organiser les boutons radio -->
-                <HBox layoutX="183.0" layoutY="264.0" spacing="15.0">
-                    <RadioButton fx:id="etatEnAttente" text="En attente" />
-                    <RadioButton fx:id="etatRefuse" text="Refusé" />
-                    <RadioButton fx:id="etatAccepte" text="Accepté" />
-                </HBox>
-
-                <!-- Étiquette pour la motivation -->
-                <Label layoutX="9.0" layoutY="233.0" prefHeight="20.0" prefWidth="216.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="📝 Motivation de l'étudiant :" />
-                <!-- Zone de texte pour la motivation (limitée en caractères) -->
-                <TextArea fx:id="motivationField" layoutX="200.0" layoutY="224.0" prefHeight="33.0" prefWidth="400.0" promptText="Expliquez votre motivation en quelques lignes..." wrapText="true" />
-
-                <!-- Étiquette pour la filière d'intérêt -->
-                <Label layoutX="10.0" layoutY="196.0" prefHeight="20.0" prefWidth="149.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="🎓 Filière d'intérêt :" />
-                <!-- Menu déroulant pour le choix de la filière -->
-                <ComboBox fx:id="filiereComboBox" layoutX="186.0" layoutY="193.0" prefWidth="400.0" promptText="BTS">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="BTS SIO SLAM" />
-                            <String fx:value="BTS SIO SISR" />
-                            <String fx:value="BTS Commerce International" />
-                            <String fx:value="BTS Gestion PME" />
-                            <String fx:value="BTS Tourisme" />
-                        </FXCollections>
-                    </items>
-                </ComboBox>
-            <Label fx:id="getStudentNameLastName" layoutX="31.0" layoutY="353.0" text="L etudiant son nom et prenom">
-               <font>
-                  <Font name="Avenir Black Oblique" size="25.0" />
-               </font>
-            </Label>
-                <Pane layoutX="30.0" layoutY="390.0" prefHeight="150.0" prefWidth="560.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-color: #003366; -fx-border-width: 2; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);">
-
-                    <!-- VBox pour organiser les informations de l'étudiant -->
-                    <VBox layoutX="20.0" layoutY="15.0" spacing="10.0">
-
-                        <HBox spacing="10.0">
-                            <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #003366;" text="📧 Email :" />
-                            <Label fx:id="emailLabel" style="-fx-font-size: 14;" text="etudiant@mail.com" />
-                        </HBox>
-
-                        <HBox spacing="10.0">
-                            <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #003366;" text="📞 Téléphone :" />
-                            <Label fx:id="telephoneLabel" style="-fx-font-size: 14;" text="+33 6 12 34 56 78" />
-                        </HBox>
-
-                        <HBox spacing="10.0">
-                            <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #003366;" text="🏠 Adresse :" />
-                            <Label fx:id="adresseLabel" style="-fx-font-size: 14;" text="123, Rue de l'Université, Paris" />
-                        </HBox>
-
-                        <HBox spacing="10.0">
-                            <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #003366;" text="🎓 Dernier diplôme :" />
-                            <Label fx:id="diplomeLabel" style="-fx-font-size: 14;" text="Baccalauréat Scientifique" />
-                        </HBox>
-
-                    </VBox>
-                </Pane>
+                <Button onAction="#changePageSceneAddStudentButton" layoutX="402.0" layoutY="104.0" mnemonicParsing="false" style="-fx-background-color: #1A237E; -fx-font-size: 14px;  -fx-background-radius: 8px; -fx-padding: 8px 16px;" text="Aucun étudiant trouvé. Créez-en un !" textFill="WHITE">
+                    <font>
+                        <Font name="Al Bayan Bold" size="13.0" />
+                    </font></Button>
+                <TextField fx:id="keywordTextField" layoutX="64.0" layoutY="171.0" promptText="Rechercher étudiant..." />
+                <ImageView fitHeight="33.0" fitWidth="25.0" layoutX="34.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/medias/search_bar.png" />
+                    </image>
+                </ImageView>
+                <TableView fx:id="StudentTableView" layoutX="35.0" layoutY="218.0" prefHeight="349.0" prefWidth="585.0"
+                           style="-fx-border-color: white; -fx-border-radius: 8px; -fx-padding: 5px;">
+                    <columns>
+                        <TableColumn fx:id="nomTableColumn" prefWidth="117.0" text="Nom" style="-fx-alignment: CENTER; -fx-font-weight: bold; -fx-background-color: #3949AB; -fx-text-fill: white;" />
+                        <TableColumn fx:id="prenomTableColumn" prefWidth="99.0" text="Prenom" style="-fx-alignment: CENTER; -fx-font-weight: bold; -fx-background-color: #3949AB; -fx-text-fill: white;" />
+                        <TableColumn fx:id="mailTableColumn" prefWidth="98.0" text="Mail" style="-fx-alignment: CENTER; -fx-font-weight: bold; -fx-background-color: #3949AB; -fx-text-fill: white;" />
+                        <TableColumn fx:id="telTableColumn" prefWidth="112.0" text="Telephone" style="-fx-alignment: CENTER; -fx-font-weight: bold; -fx-background-color: #3949AB; -fx-text-fill: white;" />
+                        <TableColumn fx:id="lastDiplomeTableColumn" prefWidth="158.0" text="Dernier Diplome" style="-fx-alignment: CENTER; -fx-font-weight: bold; -fx-background-color: #3949AB; -fx-text-fill: white;" />
+                    </columns>
+                </TableView>
             </children></Pane>
-            </children>
+    </children>
 </HBox>

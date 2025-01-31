@@ -28,7 +28,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-public class CreateDossierController implements Initializable {
+public class AllFichesStudentsController implements Initializable {
 
     @FXML
     private TableView<Student> StudentTableView;
@@ -53,17 +53,12 @@ public class CreateDossierController implements Initializable {
 
     ObservableList<Student> studentObservableList = FXCollections.observableArrayList();
 
-    // Du coup ici mes maps ne servent à rien j'utilise directement lobjet student (les fonctione) getter pour ma barre de recherche !
-    private  Map<Integer, String> studentNom = new HashMap<>();
-    private Map<Integer, String> studentPrenom = new HashMap<>();
-    private Map<Integer, String> studentMail = new HashMap<>();
-    private Map<Integer, String> studentLastDiplome = new HashMap<>();
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Connection my_bdd = null;
         try {
             my_bdd = Bdd.my_bdd();
-            PreparedStatement reqGetAllStudents = my_bdd.prepareStatement("SELECT e.*, d.* FROM etudiants as e LEFT JOIN dossiers as d ON e.id_etudiant = d.ref_etudiant WHERE d.ref_etudiant is null");
+            PreparedStatement reqGetAllStudents = my_bdd.prepareStatement("SELECT * FROM `etudiants` w");
             ResultSet data = reqGetAllStudents.executeQuery();
 
             while (data.next())
@@ -75,12 +70,6 @@ public class CreateDossierController implements Initializable {
                 Integer telephone = data.getInt("tel");
                 String adresse = data.getString("adresse");
                 String lastDiplome = data.getString("dernier_diplome_obtenu");
-
-
-                studentNom.put(id_student, nom);
-                studentPrenom.put(id_student, prenom);
-                studentMail.put(id_student, mail);
-                studentLastDiplome.put(id_student, lastDiplome);
 
                 studentObservableList.add(new Student(id_student, nom, prenom, mail, telephone, adresse, lastDiplome));
             }
@@ -127,7 +116,7 @@ public class CreateDossierController implements Initializable {
                     if (selectedDossier != null) {
                         StudentSingleton.getInstance().setStudentId(selectedDossier);
                         try {
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/secretaryView/AssemblyDossier-view.fxml"));
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/secretaryView/ficheStudent-view.fxml"));
                             Parent root = loader.load();
                             Stage currentStage = (Stage) StudentTableView.getScene().getWindow();
                             currentStage.setScene(new Scene(root));

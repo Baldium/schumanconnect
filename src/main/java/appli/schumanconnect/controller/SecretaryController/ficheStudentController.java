@@ -27,7 +27,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class AssemblyDossierController implements Initializable {
+public class ficheStudentController implements Initializable {
 
     @FXML
     private Label getNameLabel;
@@ -47,25 +47,9 @@ public class AssemblyDossierController implements Initializable {
     @FXML
     private Label diplomeLabel;
 
-    @FXML
-    private ComboBox<String> filiereComboBox;
-
-    @FXML
-    private TextArea motivationField;
-
-    @FXML
-    private RadioButton etatEnAttente, etatRefuse, etatAccepte;
 
     @FXML
     private Label messageErreur;
-
-
-    LocalDateTime now = LocalDateTime.now();
-    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-
-    // Séparer la date et l'heure en chaînes distinctes
-    String dateTime = now.format(dateFormatter) + " " + now.format(timeFormatter);    String time = now.format(timeFormatter);  // Exemple: 14:45:30
 
     Student StudentId = StudentSingleton.getInstance().getStudentId();
 
@@ -80,7 +64,7 @@ public class AssemblyDossierController implements Initializable {
 
             while (data.next())
             {
-                getNameLabel.setText("Creation du dossier de " + data.getString("prenom"));
+                getNameLabel.setText("Fiche étudiante de " + data.getString("prenom"));
                 getStudentNameLastName.setText(data.getString("nom") +" " + data.getString("prenom") + " :");
                 emailLabel.setText(data.getString("email"));
                 telephoneLabel.setText(data.getString("tel"));
@@ -92,24 +76,6 @@ public class AssemblyDossierController implements Initializable {
         catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
-        // Gérer la sélection unique manuellement
-        etatEnAttente.setOnAction(event -> {
-            etatRefuse.setSelected(false);
-            etatAccepte.setSelected(false);
-        });
-
-        etatRefuse.setOnAction(event -> {
-            etatEnAttente.setSelected(false);
-            etatAccepte.setSelected(false);
-        });
-
-        etatAccepte.setOnAction(event -> {
-            etatEnAttente.setSelected(false);
-            etatRefuse.setSelected(false);
-        });
-
     }
 
     private void showFlashMessage(String message) {
@@ -126,30 +92,18 @@ public class AssemblyDossierController implements Initializable {
     }
 
     @FXML
-    public void addStudent(ActionEvent event) throws SQLException, IOException {
-
-        if (filiereComboBox.getValue() == null || motivationField.getText().trim().isEmpty() ||
-                (!etatEnAttente.isSelected() && !etatAccepte.isSelected() && !etatRefuse.isSelected())) {
-            showFlashMessage("⚠️ Veuillez remplir tous les champs avant de soumettre !");
-            return;
-        }
-
-        int etat = -1;
-        if (etatEnAttente.isSelected()) {
-            etat = 2;  // En attente
-        } else if (etatAccepte.isSelected()) {
-            etat = 1;  // Accepté
-        } else if (etatRefuse.isSelected()) {
-            etat = 0;  // Refusé
-        }
-        Dossier dossier = new Dossier(0, dateTime, filiereComboBox.getValue(), motivationField.getText(), etat, StudentId.getIdEtudiant());
-        if (DossierRepository.dossierExists(dossier)){
-            ScenePage.switchView("/appli/schumanconnect/secretaryView/allStudents.fxml", event);
-        }
-        DossierRepository.addDossierStudent(dossier);
+    public void dropStudent(ActionEvent event) throws SQLException, IOException {
 
         ScenePage.switchView("/appli/schumanconnect/secretaryView/allStudents.fxml", event);
     }
+
+    @FXML
+    public void editStudent(ActionEvent event) throws IOException{
+
+        ScenePage.switchView("/appli/schumanconnect/secretaryView/allStudents.fxml", event);
+
+    }
+
 
     @FXML
     public void logout(ActionEvent event) throws IOException {
