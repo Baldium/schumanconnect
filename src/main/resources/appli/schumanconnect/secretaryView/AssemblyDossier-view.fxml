@@ -188,12 +188,12 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Label fx:id="label1" layoutX="10.0" layoutY="154.0" styleClass="lbl" stylesheets="@../css/styles.css" text="Creation du dossier de untel" textFill="#837d7d">
+                <Label fx:id="getNameLabel" layoutX="10.0" layoutY="154.0" styleClass="lbl" stylesheets="@../css/styles.css" text="Creation du dossier de untel" textFill="#837d7d">
                     <font>
                         <Font name="Helvetica Bold Oblique" size="16.0" />
                     </font>
                 </Label>
-                <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="234.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="243.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../assets/medias/dossier.png" />
                     </image>
@@ -218,7 +218,7 @@
                 <!-- Étiquette pour la filière d'intérêt -->
                 <Label layoutX="10.0" layoutY="196.0" prefHeight="20.0" prefWidth="149.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="🎓 Filière d'intérêt :" />
                 <!-- Menu déroulant pour le choix de la filière -->
-                <ComboBox fx:id="filiereComboBox" layoutX="186.0" layoutY="193.0" prefWidth="400.0">
+                <ComboBox fx:id="filiereComboBox" layoutX="186.0" layoutY="193.0" prefWidth="400.0" promptText="BTS">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="BTS SIO SLAM" />
@@ -229,7 +229,7 @@
                         </FXCollections>
                     </items>
                 </ComboBox>
-            <Label layoutX="31.0" layoutY="353.0" text="L etudiant son nom et prenom">
+            <Label fx:id="getStudentNameLastName" layoutX="31.0" layoutY="353.0" text="L etudiant son nom et prenom">
                <font>
                   <Font name="Avenir Black Oblique" size="25.0" />
                </font>

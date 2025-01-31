@@ -46,7 +46,7 @@
                             </cursor>
                         </ImageView>
                     </children></Pane>
-                <Button fx:id="btn_home" onAction="#changePageSceneHome" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="182.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="SchumanConnect" textFill="#1b47d1">
+                <Button fx:id="btn_home" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" onAction="#changePageSceneHome" prefHeight="45.0" prefWidth="182.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="SchumanConnect" textFill="#1b47d1">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -62,8 +62,8 @@
                     <menus>
                         <Menu id="btn_menu_bar" fx:id="btn_menu_bar" mnemonicParsing="false" style="-fx-text-fill: transparent;" styleClass="btn_menu_bar" text="Étudiants">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Créer un étudiant" onAction="#changePageSceneAddStudent" />
-                                <MenuItem mnemonicParsing="false" text="Dossiers d'inscription" onAction="#changePageSceneDossierInscription" />
+                                <MenuItem mnemonicParsing="false" onAction="#changePageSceneAddStudent" text="Créer un étudiant" />
+                                <MenuItem mnemonicParsing="false" onAction="#changePageSceneDossierInscription" text="Dossiers d'inscription" />
                             </items>
                             <graphic>
                                 <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
@@ -198,31 +198,22 @@
                 <Image url="@../assets/medias/organiser.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="589.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="589.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../assets/medias/dossier.png" />
             </image>
         </ImageView>
-            <Button onAction="#changePageSceneCreateDossier" fx:id="createDossier" layoutX="618.0" layoutY="75.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="120.0" text="Créer un dossier" />
+            <Button fx:id="createDossier" layoutX="618.0" layoutY="75.0" mnemonicParsing="false" onAction="#changePageSceneCreateDossier" prefHeight="31.0" prefWidth="120.0" text="Créer un dossier" />
             <TableView fx:id="DossierTableView" layoutX="40.0" layoutY="160.0" prefHeight="426.0" prefWidth="705.0">
               <columns>
                 <TableColumn fx:id="idStudentTableColumn" prefWidth="101.89657592773438" text="Numéro" />
                 <TableColumn fx:id="nameStudentTableColumn" prefWidth="83.081298828125" text="Nom" />
                   <TableColumn fx:id="firstNameTableColumn" prefWidth="72.51974487304688" text="Prénom" />
-                  <TableColumn fx:id="dateCreationTableColumn" prefWidth="106.08871459960938" text="date de création" />
-                  <TableColumn fx:id="statusTableColumn" prefWidth="65.1773681640625" text="Status" />
+                  <TableColumn fx:id="dateCreationTableColumn" prefWidth="165.5" text="         date de création" />
+                  <TableColumn fx:id="statusTableColumn" prefWidth="70.5" text="Status" />
               </columns>
             </TableView>
-        <TextField fx:id="keywordTextField"
-                   blendMode="DARKEN"
-                   cache="true"
-                   depthTest="ENABLE"
-                   focusTraversable="false"
-                   layoutX="66.0"
-                   layoutY="115.0"
-                   promptText="Rechercher étudiant..."
-                   styleClass="txt_search"
-                   stylesheets="@../css/styles.css">
+        <TextField fx:id="keywordTextField" blendMode="DARKEN" cache="true" depthTest="ENABLE" focusTraversable="false" layoutX="66.0" layoutY="115.0" promptText="Rechercher étudiant..." styleClass="txt_search" stylesheets="@../css/styles.css">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
