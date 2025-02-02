@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.SecretaryController.AddStudentsController">
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.SecretaryController.EditStudentController">
     <children>
         <VBox prefHeight="602.0" prefWidth="199.0">
             <children>
@@ -177,8 +177,7 @@
                         <Label layoutX="86.0" layoutY="10.0" text="SchumanConnect">
                             <font>
                                 <Font name="Avenir Black Oblique" size="25.0" />
-                            </font>
-                        </Label>
+                            </font></Label>
                         <ImageView fitHeight="78.0" fitWidth="102.0" layoutX="8.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../assets/medias/Logo_Schuman_Connect.png" />
@@ -186,62 +185,60 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <VBox layoutX="20.0" layoutY="100.0" prefWidth="600.0" spacing="15.0">
+                <Label fx:id="getNameLabel" layoutX="10.0" layoutY="154.0" styleClass="lbl" stylesheets="@../css/styles.css" text="Fiche étudiante de :" textFill="#837d7d">
+                    <font>
+                        <Font name="Helvetica Bold Oblique" size="16.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="208.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/medias/organiser.png" />
+                    </image>
+                </ImageView>
+                <Pane fx:id="pane_color" layoutX="20.0" layoutY="66.0" prefHeight="59.0" prefWidth="619.0" style="-fx-background-color: #003366; -fx-border-radius: 10px; -fx-background-radius: 10px;">
                     <children>
-                  <ImageView fitHeight="82.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/medias/groupe.png" />
-                     </image>
-                  </ImageView>
-                        <Label style="-fx-font-size: 24; -fx-font-weight: bold;" text="Ajouter un étudiant">
-                     <graphic>
-                        <ImageView fitHeight="49.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/medias/dossier_etudiant.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Label>
-                  <Label prefHeight="29.0" prefWidth="47.0" style="-fx-font-size: 24; -fx-font-weight: bold;" />
-                        <HBox spacing="10.0">
-                            <Label prefHeight="20.0" prefWidth="119.0" style="-fx-font-size: 16;" text="Prénom :" />
-                            <TextField fx:id="firstNameField" prefHeight="26.0" prefWidth="400.0" />
-                        </HBox>
-                        <HBox spacing="10.0">
-                            <Label prefWidth="119.0" style="-fx-font-size: 16;" text="Nom :" />
-                            <TextField fx:id="lastNameField" prefWidth="400.0" />
-                        </HBox>
-                        <HBox spacing="10.0">
-                            <Label prefWidth="119.0" style="-fx-font-size: 16;" text="E-mail :" />
-                            <TextField fx:id="emailField" prefWidth="400.0" />
-                        </HBox>
-                        <HBox spacing="10.0">
-                            <Label prefHeight="20.0" prefWidth="119.0" style="-fx-font-size: 16;" text="Téléphone :" />
-                            <TextField fx:id="phoneField" prefWidth="400.0" />
-                        </HBox>
-                        <HBox spacing="10.0">
-                            <Label prefHeight="20.0" prefWidth="119.0" style="-fx-font-size: 16;" text="Adresse :" />
-                            <TextField fx:id="addressField" prefWidth="400.0" />
-                        </HBox>
-                        <HBox spacing="10.0">
-                            <Label prefHeight="20.0" prefWidth="119.0" style="-fx-font-size: 16;" text="Dernier diplôme :" />
-                            <TextField fx:id="diplomeField" prefWidth="400.0" />
-                        </HBox>
-                        <Button fx:id="btn_submit" layoutX="50.0" layoutY="400.0" onAction="#addStudent" prefHeight="22.0" prefWidth="137.0" text="Soumettre">
-                            <style>
-                                -fx-background-color: linear-gradient(to bottom, #4CAF50, #2E7D32); /* Dégradé de vert */
-                                -fx-text-fill: white; /* Couleur du texte blanche */
-                                -fx-font-size: 18px; /* Taille de la police */
-                                -fx-font-weight: bold; /* Texte en gras */
-                                -fx-border-color: #388E3C; /* Couleur de la bordure */
-                                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0, 0, 5); /* Effet ombre portée */
-                                -fx-cursor: hand; /* Change le curseur au survol */
-                            </style>
-                        </Button>
-                    </children>
-                </VBox>
-            <Label fx:id="label" layoutX="190.0" layoutY="63.0" prefHeight="17.0" prefWidth="359.0" style="-fx-text-fill: red;" />
-            </children>
-        </Pane>
+                        <Label fx:id="messageErreur" layoutX="14.0" layoutY="6.0" textFill="#f80505" />
+                    </children></Pane>
+                <!-- HBox pour organiser les boutons radio -->
+                <HBox layoutX="183.0" layoutY="264.0" spacing="15.0" />
+                <Label fx:id="getStudentNameLastName" layoutX="13.0" layoutY="176.0" text="L etudiant son nom et prenom">
+                    <font>
+                        <Font name="Avenir Black Oblique" size="25.0" />
+                    </font>
+                </Label>
+                <Pane fx:id="editPane" layoutX="12.0" layoutY="213.0" prefHeight="231.0" prefWidth="577.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-color: #003366; -fx-border-width: 2; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);">
 
+                    <!-- VBox pour organiser les informations de l'étudiant -->
+                    <VBox layoutX="20.0" layoutY="15.0" spacing="15.0">
+
+                        <!-- Champ Email -->
+                        <HBox spacing="10.0">
+                            <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #003366;" text="📧 Email :" />
+                            <TextField fx:id="emailField" promptText="Entrez l'email" style="-fx-font-size: 14; -fx-pref-width: 300;" />
+                        </HBox>
+
+                        <!-- Champ Téléphone -->
+                        <HBox spacing="10.0">
+                            <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #003366;" text="📞 Téléphone :" />
+                            <TextField fx:id="telephoneField" promptText="Entrez le téléphone" style="-fx-font-size: 14; -fx-pref-width: 300;" />
+                        </HBox>
+
+                        <!-- Champ Adresse -->
+                        <HBox spacing="10.0">
+                            <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #003366;" text="🏠 Adresse :" />
+                            <TextField fx:id="adresseField" promptText="Entrez l'adresse" style="-fx-font-size: 14; -fx-pref-width: 300;" />
+                        </HBox>
+
+                        <!-- Champ Dernier Diplôme -->
+                        <HBox spacing="10.0">
+                            <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #003366;" text="🎓 Dernier diplôme :" />
+                            <TextField fx:id="diplomeField" promptText="Entrez le dernier diplôme" style="-fx-font-size: 14; -fx-pref-width: 300;" />
+                        </HBox>
+
+                    </VBox>
+                    <Button fx:id="btn_submit" layoutX="24.0" layoutY="176.0" onAction="#editStudent" prefHeight="37.0" prefWidth="217.0" style="-fx-background-color: linear-gradient(to bottom, #4CAF50, #2E7D32);                                        -fx-text-fill: white;                                        -fx-font-size: 18px;                                        -fx-font-weight: bold;                                        -fx-border-color: #388E3C;                                        -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0, 0, 5);                                        -fx-cursor: hand;" text="Confirmer la modification" />
+                    <Button fx:id="btn_cancel" layoutX="250.0" layoutY="176.0" onAction="#cancelEdit" prefHeight="37.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to bottom, #D32F2F, #B71C1C);                        -fx-text-fill: white;                        -fx-font-size: 16px;                        -fx-font-weight: bold;                        -fx-border-color: #B71C1C;                        -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0, 0, 5);                        -fx-cursor: hand;" text="❌ Annuler" />
+                </Pane>
+            </children></Pane>
     </children>
 </HBox>

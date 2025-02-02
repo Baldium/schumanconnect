@@ -184,12 +184,12 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Label fx:id="getNameLabel" layoutX="10.0" layoutY="154.0" styleClass="lbl" stylesheets="@../css/styles.css" text="Creation du dossier de untel" textFill="#837d7d">
+                <Label fx:id="getNameLabel" layoutX="10.0" layoutY="154.0" styleClass="lbl" stylesheets="@../css/styles.css" text="Fiche étudiante de :" textFill="#837d7d">
                     <font>
                         <Font name="Helvetica Bold Oblique" size="16.0" />
                     </font>
                 </Label>
-                <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="243.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="208.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../assets/medias/organiser.png" />
                     </image>

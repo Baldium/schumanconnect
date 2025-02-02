@@ -1,7 +1,6 @@
 package appli.schumanconnect.controller.SecretaryController;
-import appli.schumanconnect.model.Dossier;
+
 import appli.schumanconnect.model.Student;
-import appli.schumanconnect.repository.SecretaryRepository.DossierRepository;
 import appli.schumanconnect.repository.SecretaryRepository.StudentRepository;
 import appli.schumanconnect.utils.*;
 import javafx.animation.KeyFrame;
@@ -14,21 +13,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class ficheStudentController implements Initializable {
+public class EditStudentController implements Initializable {
 
     @FXML
     private Label getNameLabel;
@@ -37,70 +31,80 @@ public class ficheStudentController implements Initializable {
     private Label getStudentNameLastName;
 
     @FXML
-    private Label emailLabel;
+    private TextField emailField;
 
     @FXML
-    private Label telephoneLabel;
+    private TextField telephoneField;
 
     @FXML
-    private Label adresseLabel;
+    private TextField adresseField;
 
     @FXML
-    private Label diplomeLabel;
-
+    private TextField diplomeField;
 
     @FXML
     private Label messageErreur;
 
-    Student StudentId = StudentSingleton.getInstance().getStudentId();
-
+    Student student = StudentSingleton.getInstance().getStudentId();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             Connection my_bdd = Bdd.my_bdd();
-            PreparedStatement reqGetStudent = my_bdd.prepareStatement("SELECT * FROM `etudiants` WHERE `id_etudiant`= ?");
-            reqGetStudent.setInt(1, StudentId.getIdEtudiant());
+            PreparedStatement reqGetStudent = my_bdd.prepareStatement("SELECT * FROM etudiants WHERE id_etudiant = ?");
+            reqGetStudent.setInt(1, student.getIdEtudiant());
             ResultSet data = reqGetStudent.executeQuery();
 
-            while (data.next())
-            {
+            if (data.next()) {
                 getNameLabel.setText("Fiche étudiante de " + data.getString("prenom"));
-                getStudentNameLastName.setText(data.getString("nom") +" " + data.getString("prenom") + " :");
-                emailLabel.setText(data.getString("email"));
-                telephoneLabel.setText(data.getString("tel"));
-                adresseLabel.setText(data.getString("adresse"));
-                diplomeLabel.setText(data.getString("dernier_diplome_obtenu"));
+                getStudentNameLastName.setText(data.getString("nom") + " " + data.getString("prenom") + " :");
+                emailField.setText(data.getString("email"));
+                telephoneField.setText(data.getString("tel"));
+                adresseField.setText(data.getString("adresse"));
+                diplomeField.setText(data.getString("dernier_diplome_obtenu"));
             }
-        }
-
-        catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
     private void showFlashMessage(String message) {
         Platform.runLater(() -> {
             messageErreur.setText(message);
-
-            // Planifie l'effacement du message après 3 secondes
             Timeline timeline = new Timeline(
                     new KeyFrame(Duration.seconds(3), evt -> messageErreur.setText(""))
             );
-            timeline.setCycleCount(1); // Exécute une seule fois
+            timeline.setCycleCount(1);
             timeline.play();
         });
     }
 
     @FXML
-    public void dropStudent(ActionEvent event) throws SQLException, IOException {
-        StudentRepository.dropDossier(StudentId.getIdEtudiant());
-        ScenePage.switchView("/appli/schumanconnect/secretaryView/allFichesStudents-view.fxml", event);
+    public void editStudent(ActionEvent event) {
+        try {
+            if (validateFields()) {
+                // Demander confirmation avant mise à jour
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation");
+                alert.setHeaderText("Modification des informations");
+                alert.setContentText("Êtes-vous sûr de vouloir modifier ces informations ?");
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                    StudentRepository.updateStudent(student.getIdEtudiant(),emailField.getText(), telephoneField.getText(), adresseField.getText(), diplomeField.getText());
+                    showFlashMessage("Les informations ont été mises à jour avec succès !");
+                    ScenePage.switchView("/appli/schumanconnect/secretaryView/allFichesStudents-view.fxml", event);
+                }
+            }
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+            showFlashMessage("Erreur lors de la mise à jour !");
+        }
     }
 
     @FXML
-    public void editStudent(ActionEvent event) throws IOException{
-        ScenePage.switchView("/appli/schumanconnect/secretaryView/editFicheStudent-view.fxml", event);
+    public void cancelEdit(ActionEvent event) throws IOException {
+        ScenePage.switchView("/appli/schumanconnect/secretaryView/allFichesStudents-view.fxml", event);
     }
 
     @FXML
@@ -108,6 +112,27 @@ public class ficheStudentController implements Initializable {
         UserConnectedSingleton.getInstance().logout();
         ScenePage.switchView("/appli/schumanconnect/login-view.fxml", event);
     }
+
+    private boolean validateFields() {
+        if (emailField.getText().isEmpty() || telephoneField.getText().isEmpty() ||
+                adresseField.getText().isEmpty() || diplomeField.getText().isEmpty()) {
+            showFlashMessage("Tous les champs doivent être remplis !");
+            return false;
+        }
+
+        if (!emailField.getText().matches("^[\\w.-]+@[a-zA-Z\\d.-]+\\.[a-zA-Z]{2,6}$")) {
+            showFlashMessage("Veuillez entrer une adresse email valide !");
+            return false;
+        }
+
+        if (!telephoneField.getText().matches("^\\+?\\d{10,15}$")) {
+            showFlashMessage("Veuillez entrer un numéro de téléphone valide !");
+            return false;
+        }
+
+        return true;
+    }
+
 
     @FXML
     public void changePageSceneFichesEtudiantes(ActionEvent event) throws IOException {
@@ -149,5 +174,5 @@ public class ficheStudentController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-}
 
+}

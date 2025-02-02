@@ -12,7 +12,7 @@ public class StartApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 899, 518);
-        stage.setTitle("Hello!");
+        stage.setTitle("SchumanConnect");
         stage.setScene(scene);
         stage.show();
     }

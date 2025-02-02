@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 
 public class StudentRepository {
     public static int register(Student student) throws SQLException {
@@ -49,5 +51,76 @@ public class StudentRepository {
             FlashMessage.show("Erreur : " + e.getMessage(), Alert.AlertType.ERROR);
             throw new RuntimeException(e);
         }
+    }
+
+
+    public static void dropDossier(int idFicheEtudiante) throws SQLException {
+        try {
+            Connection my_bdd = Bdd.my_bdd();
+            PreparedStatement reqVerifDossierExist = my_bdd.prepareStatement("SELECT e.*, d.* FROM etudiants AS e INNER JOIN dossiers AS d ON e.id_etudiant = d.ref_etudiant WHERE e.id_etudiant = ?");
+            reqVerifDossierExist.setInt(1, idFicheEtudiante);
+            ResultSet data = reqVerifDossierExist.executeQuery();
+            boolean hasDossier = data.next();
+
+            // Message de confirmation (GPT)
+            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmation.setTitle("Confirmation de suppression");
+            confirmation.setHeaderText("Voulez-vous vraiment supprimer cet étudiant ?");
+
+            if (hasDossier) {
+                confirmation.setContentText("⚠️ Cet étudiant a un dossier associé !\n"
+                        + "Supprimer cette fiche entraînera la perte du dossier lié.\n"
+                        + "Cette action est irréversible.");
+            } else {
+                confirmation.setContentText("✅ Cette fiche étudiante n'a pas de dossier associé.\n"
+                        + "Confirmez-vous la suppression ?");
+            }
+
+            // Attendre la réponse de l'utilisateur (GPT)
+            confirmation.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    try {
+                        PreparedStatement reqDropStudent = my_bdd.prepareStatement("DELETE FROM etudiants WHERE id_etudiant = ?");
+                        reqDropStudent.setInt(1, idFicheEtudiante);
+                        reqDropStudent.executeUpdate();
+
+                        // Message de succès
+                        Alert success = new Alert(Alert.AlertType.INFORMATION);
+                        success.setTitle("Suppression réussie");
+                        success.setHeaderText(null);
+                        success.setContentText("L'étudiant a été supprimé avec succès.");
+                        success.showAndWait();
+
+                    } catch (SQLException e) {
+                        throw new RuntimeException("Erreur lors de la suppression : " + e.getMessage());
+                    }
+                }
+            });
+
+        } catch (Exception e) {
+            throw new RuntimeException("Erreur : " + e.getMessage());
+        }
+    }
+
+    public static void updateStudent(int idFicheEtudiante, String email, String telephone, String adresse, String diplome) throws SQLException {
+
+        Connection my_bdd = Bdd.my_bdd();
+        PreparedStatement checkMail = my_bdd.prepareStatement("SELECT COUNT(*) FROM etudiants WHERE email = ?");
+        checkMail.setString(1, email);
+        ResultSet data = checkMail.executeQuery();
+        if (data.next() && data.getInt(1) > 0) {
+            FlashMessage.show("L'email existe déjà dans la base.", Alert.AlertType.WARNING);
+            return;
+        }
+        String updateQuery = "UPDATE etudiants SET email = ?, tel = ?, adresse = ?, dernier_diplome_obtenu = ? WHERE id_etudiant = ?";
+
+        PreparedStatement preparedStatement = my_bdd.prepareStatement(updateQuery);
+        preparedStatement.setString(1, email);
+        preparedStatement.setString(2, telephone);
+        preparedStatement.setString(3, adresse);
+        preparedStatement.setString(4, diplome);
+        preparedStatement.setInt(5, idFicheEtudiante);
+
+        preparedStatement.executeUpdate();
     }
 }

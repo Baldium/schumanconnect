@@ -56,6 +56,18 @@ public class AddStudentsController {
     @FXML
     private Label label;
 
+    // ✅ Validation d'un email avec une regex
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        return email.matches(emailRegex);
+    }
+
+    // ✅ Validation d'un numéro de téléphone (10 chiffres FR ou format international)
+    private boolean isValidPhoneNumber(String phone) {
+        String phoneRegex = "^(\\+\\d{1,3}[- ]?)?\\d{10}$";
+        return phone.matches(phoneRegex);
+    }
+
 
     @FXML
     public void addStudent(ActionEvent event) throws IOException, SQLException {
@@ -67,6 +79,19 @@ public class AddStudentsController {
                 diplomeField.getText().isEmpty()) {
             return;
         }
+
+        // Vérifier le format de l'email
+        if (!isValidEmail(emailField.getText())) {
+            showFlashMessage("Adresse e-mail invalide !");
+            return;
+        }
+
+        // Vérifier le format du numéro de téléphone
+        if (!isValidPhoneNumber(phoneField.getText())) {
+            showFlashMessage("Numéro de téléphone invalide !");
+            return;
+        }
+
 
         try {
             Integer.parseInt(phoneField.getText());
