@@ -72,7 +72,7 @@ public class CreateDossierController implements Initializable {
                 String nom = data.getString("nom");
                 String prenom = data.getString("prenom");
                 String mail = data.getString("email");
-                Integer telephone = data.getInt("tel");
+                String telephone = data.getString("tel");
                 String adresse = data.getString("adresse");
                 String lastDiplome = data.getString("dernier_diplome_obtenu");
 

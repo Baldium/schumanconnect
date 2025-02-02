@@ -1,6 +1,7 @@
 package appli.schumanconnect.repository.SecretaryRepository;
 
 import appli.schumanconnect.controller.FlashMessage;
+import appli.schumanconnect.model.Dossier;
 import appli.schumanconnect.model.Student;
 import appli.schumanconnect.utils.Bdd;
 import javafx.scene.control.Alert;
@@ -33,7 +34,7 @@ public class StudentRepository {
             reqInsertStudent.setString(1, student.getNom());
             reqInsertStudent.setString(2, student.getPrenom());
             reqInsertStudent.setString(3, student.getEmail());
-            reqInsertStudent.setInt(4, student.getTel());
+            reqInsertStudent.setString(4, student.getTel());
             reqInsertStudent.setString(5, student.getAdresse());
             reqInsertStudent.setString(6, student.getDernierDiplomeObtenu());
 
@@ -123,4 +124,26 @@ public class StudentRepository {
 
         preparedStatement.executeUpdate();
     }
+
+    public static Student getById(Dossier dossier) throws SQLException {
+        try {
+        Connection my_bdd = Bdd.my_bdd();
+        PreparedStatement reqStudentById = my_bdd.prepareStatement("SELECT e.* FROM etudiants e INNER JOIN dossiers d ON e.id_etudiant = d.ref_etudiant WHERE d.id_dossier = ?");
+        reqStudentById.setInt(1, dossier.getIdDossier());
+        ResultSet data = reqStudentById.executeQuery();
+        if (data.next())
+            return new Student(data.getInt("id_etudiant"), data.getString("nom"), data.getString("prenom"), data.getString("email"), data.getString("tel"), data.getString("adresse"), data.getString("dernier_diplome_obtenu"));
+
+
+
+        return null;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
 }
+

@@ -10,6 +10,7 @@ module appli.schumanconnect {
     requires io.github.cdimascio.dotenv.java;
     requires java.desktop;
     requires jbcrypt;
+    requires org.json;
 
     exports appli.schumanconnect.controller;  // Export du package controller
     exports appli.schumanconnect.controller.SecretaryController;

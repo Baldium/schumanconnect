@@ -79,30 +79,28 @@ public class AddStudentsController {
                 diplomeField.getText().isEmpty()) {
             return;
         }
-
-        // Vérifier le format de l'email
         if (!isValidEmail(emailField.getText())) {
             showFlashMessage("Adresse e-mail invalide !");
             return;
         }
 
-        // Vérifier le format du numéro de téléphone
         if (!isValidPhoneNumber(phoneField.getText())) {
             showFlashMessage("Numéro de téléphone invalide !");
             return;
         }
 
-
         try {
-            Integer.parseInt(phoneField.getText());
+            Long.parseLong(phoneField.getText()); // On utilise Long au lieu de Integer pour gérer de grands numéros
         } catch (NumberFormatException e) {
             showFlashMessage("Le numéro de téléphone doit être un entier !");
             return;
         }
-        Student student = new Student(0, lastNameField.getText(), firstNameField.getText(), emailField.getText(), Integer.parseInt(phoneField.getText()), addressField.getText(), diplomeField.getText());
+
+        Student student = new Student(0, lastNameField.getText(), firstNameField.getText(), emailField.getText(), phoneField.getText(), addressField.getText(), diplomeField.getText());
         StudentRepository.register(student);
         ScenePage.switchView("/appli/schumanconnect/homeView/homePage-view.fxml", event);
     }
+
 
     private void showFlashMessage(String message) {
         Platform.runLater(() -> {
