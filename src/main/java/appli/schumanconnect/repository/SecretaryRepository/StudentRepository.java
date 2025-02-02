@@ -104,17 +104,21 @@ public class StudentRepository {
     }
 
     public static void updateStudent(int idFicheEtudiante, String email, String telephone, String adresse, String diplome) throws SQLException {
-
         Connection my_bdd = Bdd.my_bdd();
-        PreparedStatement checkMail = my_bdd.prepareStatement("SELECT COUNT(*) FROM etudiants WHERE email = ?");
-        checkMail.setString(1, email);
-        ResultSet data = checkMail.executeQuery();
-        if (data.next() && data.getInt(1) > 0) {
-            FlashMessage.show("L'email existe déjà dans la base.", Alert.AlertType.WARNING);
-            return;
-        }
-        String updateQuery = "UPDATE etudiants SET email = ?, tel = ?, adresse = ?, dernier_diplome_obtenu = ? WHERE id_etudiant = ?";
+        String currentEmail = getCurrentStudentEmail(idFicheEtudiante);
 
+        if (!email.equals(currentEmail)) {
+            PreparedStatement checkMail = my_bdd.prepareStatement("SELECT COUNT(*) FROM etudiants WHERE email = ? AND id_etudiant != ?");
+            checkMail.setString(1, email);
+            checkMail.setInt(2, idFicheEtudiante);
+            ResultSet data = checkMail.executeQuery();
+            if (data.next() && data.getInt(1) > 0) {
+                FlashMessage.show("L'email existe déjà dans la base.", Alert.AlertType.WARNING);
+                return;
+            }
+        }
+
+        String updateQuery = "UPDATE etudiants SET email = ?, tel = ?, adresse = ?, dernier_diplome_obtenu = ? WHERE id_etudiant = ?";
         PreparedStatement preparedStatement = my_bdd.prepareStatement(updateQuery);
         preparedStatement.setString(1, email);
         preparedStatement.setString(2, telephone);
@@ -124,6 +128,18 @@ public class StudentRepository {
 
         preparedStatement.executeUpdate();
     }
+
+    private static String getCurrentStudentEmail(int idFicheEtudiante) throws SQLException {
+        Connection my_bdd = Bdd.my_bdd();
+        PreparedStatement req = my_bdd.prepareStatement("SELECT email FROM etudiants WHERE id_etudiant = ?");
+        req.setInt(1, idFicheEtudiante);
+        ResultSet rs = req.executeQuery();
+        if (rs.next()) {
+            return rs.getString("email");
+        }
+        return null;
+    }
+
 
     public static Student getById(Dossier dossier) throws SQLException {
         try {
