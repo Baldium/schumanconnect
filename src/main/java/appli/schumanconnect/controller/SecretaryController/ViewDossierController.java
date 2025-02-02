@@ -16,11 +16,22 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
+
+import java.io.FileOutputStream;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 public class ViewDossierController implements Initializable {
 
@@ -87,6 +98,61 @@ public class ViewDossierController implements Initializable {
     public void accesStudent(ActionEvent event) throws SQLException, IOException {
         StudentSingleton.getInstance().setStudentId(StudentId);
         ScenePage.switchView("/appli/schumanconnect/secretaryView/ficheStudent-view.fxml", event);
+    }
+
+    @FXML
+    public void exportPdf() {
+        try {
+            // Nom du fichier PDF
+            String fileName = "Dossier_Etudiant_" + getStudentNameLastName.getText() + ".pdf";
+
+            // Création du document
+            Document document = new Document();
+
+            // Création du flux de sortie pour enregistrer le PDF
+            PdfWriter.getInstance(document, new FileOutputStream(fileName));
+
+            // Ouvrir le document
+            document.open();
+
+            // Ajouter un titre
+            Font titleFont = new Font(Font.FontFamily.HELVETICA, 16, Font.BOLD);
+            Paragraph title = new Paragraph("Dossier de l'Étudiant", titleFont);
+            title.setAlignment(Element.ALIGN_CENTER);
+            document.add(title);
+
+            // Espacement après le titre
+            document.add(Chunk.NEWLINE);
+
+            // Définir la police pour le contenu
+            Font contentFont = new Font(Font.FontFamily.HELVETICA, 12);
+
+            // Ajouter les informations du dossier
+            document.add(new Paragraph("Nom et Prénom: " + getStudentNameLastName.getText(), contentFont));
+            document.add(new Paragraph("Email: " + emailLabel.getText(), contentFont));
+            document.add(new Paragraph("Téléphone: " + telephoneLabel.getText(), contentFont));
+            document.add(new Paragraph("Adresse: " + adresseLabel.getText(), contentFont));
+            document.add(new Paragraph("Diplôme: " + diplomeLabel.getText(), contentFont));
+            document.add(new Paragraph("Filière: " + filiereLabel.getText(), contentFont));
+            document.add(new Paragraph("Motivation: " + motivationLabel.getText(), contentFont));
+            document.add(new Paragraph("État du Dossier: " + etatDossierLabel.getText(), contentFont));
+
+            // Fermer le document
+            document.close();
+
+            // Affichage d'une alerte de succès
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Le PDF a été exporté avec succès : " + fileName, ButtonType.OK);
+            alert.setTitle("Exportation réussie");
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        } catch (Exception e) {
+            // Alerte en cas d'erreur
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Erreur lors de l'exportation du PDF. Veuillez réessayer.", ButtonType.OK);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Une erreur est survenue");
+            alert.showAndWait();
+            e.printStackTrace();
+        }
     }
 
     @FXML

@@ -11,6 +11,7 @@ module appli.schumanconnect {
     requires java.desktop;
     requires jbcrypt;
     requires org.json;
+    requires itextpdf;
 
     exports appli.schumanconnect.controller;  // Export du package controller
     exports appli.schumanconnect.controller.SecretaryController;
