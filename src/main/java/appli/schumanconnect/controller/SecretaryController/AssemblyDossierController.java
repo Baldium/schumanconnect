@@ -2,6 +2,7 @@ package appli.schumanconnect.controller.SecretaryController;
 import appli.schumanconnect.model.Dossier;
 import appli.schumanconnect.model.Student;
 import appli.schumanconnect.repository.SecretaryRepository.DossierRepository;
+import appli.schumanconnect.service.ServiceFactory;
 import appli.schumanconnect.utils.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -142,14 +143,18 @@ public class AssemblyDossierController implements Initializable {
         } else if (etatRefuse.isSelected()) {
             etat = 0;  // Refusé
         }
+
         Dossier dossier = new Dossier(0, dateTime, filiereComboBox.getValue(), motivationField.getText(), etat, StudentId.getIdEtudiant());
-        if (DossierRepository.dossierExists(dossier)){
+        if (DossierRepository.dossierExists(dossier)) {
+            ServiceFactory.getEmailService().sendEmail(StudentId.getEmail(), "Mise à jour de votre dossier", etat);
+            ScenePage.switchView("/appli/schumanconnect/secretaryView/allStudents.fxml", event);
+        } else {
+            DossierRepository.addDossierStudent(dossier);
+            ServiceFactory.getEmailService().sendEmail(StudentId.getEmail(), "Mise à jour de votre dossier", etat);
             ScenePage.switchView("/appli/schumanconnect/secretaryView/allStudents.fxml", event);
         }
-        DossierRepository.addDossierStudent(dossier);
-
-        ScenePage.switchView("/appli/schumanconnect/secretaryView/allStudents.fxml", event);
     }
+
 
     @FXML
     public void logout(ActionEvent event) throws IOException {

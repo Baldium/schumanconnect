@@ -19,8 +19,7 @@ public class PasswordResetService {
 
     public boolean storeToken(String email, String token) {
         try (Connection my_bdd = Bdd.my_bdd()) {
-            PreparedStatement stmt = my_bdd.prepareStatement(
-                    "UPDATE users SET reset_token = ?, token_expiry = DATE_ADD(NOW(), INTERVAL 1 HOUR) WHERE email = ?");
+            PreparedStatement stmt = my_bdd.prepareStatement("UPDATE users SET reset_token = ?, token_expiry = DATE_ADD(NOW(), INTERVAL 1 HOUR) WHERE email = ?");
             stmt.setString(1, token);
             stmt.setString(2, email);
             return stmt.executeUpdate() > 0;
