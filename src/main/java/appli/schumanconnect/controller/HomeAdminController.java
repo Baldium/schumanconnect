@@ -1,100 +1,19 @@
 package appli.schumanconnect.controller;
 
-import appli.schumanconnect.model.User;
-import appli.schumanconnect.repository.HomeRepository;
 import appli.schumanconnect.utils.ScenePage;
 import appli.schumanconnect.utils.UserConnectedSingleton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
 
-public class HomeController implements Initializable {
-
-    @FXML
-    private Label labelName;
-
-    @FXML
-    private Label label_dossierr_finsih;
-
-    @FXML
-    private Label label_dossierr_wait;
-
-    @FXML
-    private Label label_dossierr_wait1;
-
-    @FXML
-    private Label progressBarFinish;
-
-    @FXML
-    private Label progressBarWait;
-
-    @FXML
-    private Label progressBarReject;
-
-    @FXML
-    private ProgressBar progressBarFinish2;
-
-    @FXML
-    private ProgressBar progressBarAttente2;
-
-    @FXML
-    private ProgressBar progressBarReject2;
-
-
-    UserConnectedSingleton UserConnected = UserConnectedSingleton.getInstance();
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        User user = UserConnected.getUserConnected();
-        if (user != null)
-            labelName.setText("Bienvenue " + user.getPrenom() + " " + user.getNom() + " !");
-        else
-            labelName.setText("Bienvenue !");
-
-        // Le nombre de dossier fini, en attente et rejetes
-        try {
-            label_dossierr_finsih.setText(String.valueOf(HomeRepository.nbDossierTermine()));
-            label_dossierr_wait.setText(String.valueOf(HomeRepository.nbDossierAttente()));
-            label_dossierr_wait1.setText(String.valueOf(HomeRepository.nbDossierRejete()));
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        // Les statistiques
-        try {
-            double pourcentageTermine = HomeRepository.pourcentageDossierTermine();
-            double pourcentageAttente = HomeRepository.pourcentageDossierAttente();
-            double pourcentageRejete = HomeRepository.pourcentageDossierRejete();
-
-            progressBarFinish.setText("Complété : " + String.format("%d", (int) pourcentageTermine) + "%");
-            progressBarWait.setText("Complété : " + String.format("%d", (int) pourcentageAttente) + "%");
-            progressBarReject.setText("Complété : " + String.format("%d", (int) pourcentageRejete) + "%");
-
-
-            progressBarFinish2.setProgress(pourcentageTermine / 100.0);
-            progressBarAttente2.setProgress(pourcentageAttente / 100.0);
-            progressBarReject2.setProgress(pourcentageRejete / 100.0);
-
-        } catch (SQLException e) {
-            FlashMessage.show("Erreur : " + e.getMessage(), Alert.AlertType.ERROR);
-            throw new RuntimeException(e);
-        }
-
-    }
+public class HomeAdminController {
 
     @FXML
     public void changePageSceneHome(ActionEvent event) throws IOException {
@@ -160,7 +79,16 @@ public class HomeController implements Initializable {
         stage.show();
     }
 
+    public void changePageSceneAdminPanel(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/adminView/PanelAdmin.fxml"));
+        Parent root = loader.load();
+        Button button = (Button) event.getSource();
+        Stage stage = (Stage) button.getScene().getWindow();
+        Scene scene = new Scene(root);
 
+        stage.setScene(scene);
+        stage.show();
+    }
 
 
 }
