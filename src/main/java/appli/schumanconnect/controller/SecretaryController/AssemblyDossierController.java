@@ -208,5 +208,18 @@ public class AssemblyDossierController implements Initializable {
         ScenePage.switchView("/appli/schumanconnect/secretaryView/addStudents.fxml", event);
     }
 
+
+    @FXML
+    public void changePageSceneAdmin(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/adminView/home-view.fxml"));
+        Parent root = loader.load();
+        MenuItem menuItem = (MenuItem) event.getSource();
+        Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
 
