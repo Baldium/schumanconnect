@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
@@ -20,9 +21,22 @@ import java.util.ResourceBundle;
 
 public class RdvStudentController implements Initializable {
 
+    @FXML
+    private ComboBox<String> comboBox;
+
+    @FXML
+    private DatePicker dateRdv;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        dateRdv.getValue();
+        comboBox.getValue();
+
+    }
+
+    @FXML
+    public void confirmRdv(ActionEvent event) throws IOException{
 
     }
 
@@ -76,14 +90,5 @@ public class RdvStudentController implements Initializable {
 
         stage.setScene(scene);
         stage.show();
-    }
-
-    @FXML
-    private ComboBox<String> comboBox;
-
-    @FXML
-    public void initialize() {
-        comboBox.getValue();
-
     }
 }
