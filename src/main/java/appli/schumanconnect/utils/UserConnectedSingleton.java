@@ -35,4 +35,3 @@ public class UserConnectedSingleton {
         this.userConnected = null;
     }
 }
-

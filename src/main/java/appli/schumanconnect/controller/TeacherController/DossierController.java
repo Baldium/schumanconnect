@@ -1,9 +1,10 @@
-package appli.schumanconnect.controller.SecretaryController;
+package appli.schumanconnect.controller.TeacherController;
 
 import appli.schumanconnect.model.Dossier;
-import appli.schumanconnect.model.Student;
+import appli.schumanconnect.model.User;
 import appli.schumanconnect.repository.SecretaryRepository.StudentRepository;
 import appli.schumanconnect.utils.*;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -15,17 +16,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class AllStudentsController implements Initializable {
+public class DossierController implements Initializable {
 
     @FXML
     private TableView<Dossier> DossierTableView;
@@ -59,7 +62,7 @@ public class AllStudentsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             // Ici, on fait notre requête pour récupérer toutes les informations nécessaires
-            String req = "SELECT d.*, e.* FROM dossiers as d INNER JOIN etudiants as e on d.ref_etudiant = e.id_etudiant";
+            String req = "SELECT d.*, e.* FROM dossiers as d INNER JOIN etudiants as e on d.ref_etudiant = e.id_etudiant where d.statut = 1";
             Connection conn = Bdd.my_bdd();
             Statement statement = conn.createStatement();
             ResultSet queryOutput = statement.executeQuery(req);
@@ -156,16 +159,16 @@ public class AllStudentsController implements Initializable {
             DossierTableView.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2) {
                     Dossier selectedDossier = DossierTableView.getSelectionModel().getSelectedItem();
-
                     if (selectedDossier != null) {
                         DossierSingleton.getInstance().setDossierId(selectedDossier);
+                        UserConnectedSingleton.getInstance();
                         try {
                             StudentSingleton.getInstance().setStudentId(StudentRepository.getById(selectedDossier));
                         } catch (SQLException e) {
                             throw new RuntimeException(e);
                         }
                         try {
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/secretaryView/viewDossier-view.fxml"));
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/rdvView/rdv-view.fxml"));
                             Parent root = loader.load();
                             Stage currentStage = (Stage) DossierTableView.getScene().getWindow();
                             currentStage.setScene(new Scene(root));
@@ -215,11 +218,6 @@ public class AllStudentsController implements Initializable {
 
         stage.setScene(scene);
         stage.show();
-    }
-
-    @FXML
-    public void changePageSceneCreateDossier(ActionEvent event) throws IOException{
-        ScenePage.switchView("/appli/schumanconnect/secretaryView/createDossier-view.fxml",event);
     }
 
     @FXML

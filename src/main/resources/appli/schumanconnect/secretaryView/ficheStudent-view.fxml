@@ -14,10 +14,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.SecretaryController.ViewDossierController">
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.SecretaryController.ficheStudentController">
     <children>
         <VBox prefHeight="602.0" prefWidth="199.0">
             <children>
@@ -185,14 +184,14 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Label fx:id="getNameLabel" layoutX="10.0" layoutY="154.0" styleClass="lbl" stylesheets="@../css/styles.css" text="Dossier de :" textFill="#837d7d">
+                <Label fx:id="getNameLabel" layoutX="10.0" layoutY="154.0" styleClass="lbl" stylesheets="@../css/styles.css" text="Fiche étudiante de :" textFill="#837d7d">
                     <font>
                         <Font name="Helvetica Bold Oblique" size="16.0" />
                     </font>
                 </Label>
-                <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="167.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="208.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../assets/medias/dossier_nonTrzite.png" />
+                        <Image url="@../assets/medias/organiser.png" />
                     </image>
                 </ImageView>
                 <Pane fx:id="pane_color" layoutX="20.0" layoutY="66.0" prefHeight="59.0" prefWidth="619.0" style="-fx-background-color: #003366; -fx-border-radius: 10px; -fx-background-radius: 10px;">
@@ -201,12 +200,12 @@
                     </children></Pane>
                 <!-- HBox pour organiser les boutons radio -->
                 <HBox layoutX="183.0" layoutY="264.0" spacing="15.0" />
-                <Label fx:id="getStudentNameLastName" layoutX="13.0" layoutY="189.0" text="nom et prenom">
+                <Label fx:id="getStudentNameLastName" layoutX="13.0" layoutY="176.0" text="L etudiant son nom et prenom">
                     <font>
                         <Font name="Avenir Black Oblique" size="25.0" />
                     </font>
                 </Label>
-                <Pane layoutX="12.0" layoutY="237.0" prefHeight="304.0" prefWidth="641.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-color: #003366; -fx-border-width: 2; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);">
+                <Pane layoutX="12.0" layoutY="213.0" prefHeight="231.0" prefWidth="577.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-color: #003366; -fx-border-width: 2; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);">
 
                     <!-- VBox pour organiser les informations de l'étudiant -->
                     <VBox layoutX="20.0" layoutY="15.0" spacing="10.0">
@@ -232,21 +231,9 @@
                         </HBox>
 
                     </VBox>
-                    <Button fx:id="btn_submit" layoutX="24.0" layoutY="247.0" onAction="#editDossier" prefHeight="37.0" prefWidth="169.0" style="-fx-background-color: linear-gradient(to bottom, #4CAF50, #2E7D32);                                        -fx-text-fill: white;                                        -fx-font-size: 18px;                                        -fx-font-weight: bold;                                        -fx-border-color: #388E3C;                                        -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0, 0, 5);                                        -fx-cursor: hand;" text="Modifier le dossier" />
-                    <Button fx:id="btn_submit1" layoutX="209.0" layoutY="246.0" onAction="#dropDossier" prefHeight="37.0" prefWidth="182.0" style="-fx-background-color: linear-gradient(to bottom, #D32F2F, #B71C1C); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-border-color: #D32F2F; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0, 0, 5);  -fx-cursor: hand;" text="Supprimer le dossier" />
-               <Button fx:id="btn_submit2" layoutX="373.0" layoutY="19.0" onAction="#accesStudent" prefHeight="37.0" prefWidth="244.0" style="-fx-background-color:  #003366;                                        -fx-text-fill: white;                                        -fx-font-size: 18px;                                        -fx-font-weight: bold;                                                                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0, 0, 5);                                        -fx-cursor: hand;" text="Acceder à sa fiche étudiante" />
-               <Line fx:id="line" endX="495.5894775390625" layoutX="134.0" layoutY="143.0" startX="-120.41398620605469" stroke="#003366" strokeWidth="1.4" />
-                    <Label layoutX="23.0" layoutY="154.0" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #003366;" text="🎓 Filière d'intérêt :" />
-                    <Label fx:id="filiereLabel" layoutX="144.0" layoutY="154.0" style="-fx-font-size: 14; -fx-text-fill: #333333;" text="BTS SIO SLAM" />
-
-                    <Label layoutX="23.0" layoutY="180.0" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #003366;" text="🔥 Motivation :" />
-                    <Label fx:id="motivationLabel" layoutX="119.0" layoutY="180.0" style="-fx-font-size: 14; -fx-text-fill: #333333;" text="L'argent" />
-
-                    <Label layoutX="23.0" layoutY="203.0" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #003366;" text="📂 État du dossier :" />
-                    <Label fx:id="etatDossierLabel" layoutX="145.0" layoutY="203.0" style="-fx-font-size: 14; -fx-text-fill: #333333;" text="En attente" />
-
+                   <Button fx:id="btn_submit" layoutX="24.0" layoutY="176.0" onAction="#editStudent" prefHeight="37.0" prefWidth="169.0" style="-fx-background-color: linear-gradient(to bottom, #4CAF50, #2E7D32);                                        -fx-text-fill: white;                                        -fx-font-size: 18px;                                        -fx-font-weight: bold;                                        -fx-border-color: #388E3C;                                        -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0, 0, 5);                                        -fx-cursor: hand;" text="Modifier la fiche" />
+                   <Button fx:id="btn_submit1" layoutX="207.0" layoutY="176.0" onAction="#dropStudent" prefHeight="37.0" prefWidth="169.0" style="-fx-background-color: linear-gradient(to bottom, #D32F2F, #B71C1C); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-border-color: #D32F2F; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0, 0, 5);  -fx-cursor: hand;" text="Supprimer la fiche" />
                 </Pane>
-            <Button fx:id="btn_submit21" layoutX="382.0" layoutY="189.0" onAction="#exportPdf" prefHeight="37.0" prefWidth="244.0" style="-fx-background-color:  #003366;                                        -fx-text-fill: white;                                        -fx-font-size: 18px;                                        -fx-font-weight: bold;                                                                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0, 0, 5);                                        -fx-cursor: hand;" text="Exporter son dossier en PDF" />
             </children></Pane>
     </children>
 </HBox>

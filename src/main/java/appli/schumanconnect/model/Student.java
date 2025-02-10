@@ -6,11 +6,11 @@ public class Student {
     private String nom;
     private String prenom;
     private String email;
-    private int tel;
+    private String tel;
     private String adresse;
     private String dernierDiplomeObtenu;
 
-    public Student(int idEtudiant, String nom, String prenom, String email, int tel, String adresse, String dernierDiplomeObtenu) {
+    public Student(int idEtudiant, String nom, String prenom, String email, String tel, String adresse, String dernierDiplomeObtenu) {
         this.idEtudiant = idEtudiant;
         this.nom = nom;
         this.prenom = prenom;
@@ -52,11 +52,11 @@ public class Student {
         this.email = email;
     }
 
-    public int getTel() {
+    public String getTel() {
         return tel;
     }
 
-    public void setTel(int tel) {
+    public void setTel(String tel) {
         this.tel = tel;
     }
 

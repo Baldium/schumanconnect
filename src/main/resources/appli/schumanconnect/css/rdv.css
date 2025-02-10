@@ -1,0 +1,84 @@
+/* Design ultra-moderne avec une esthétique premium */
+
+.root {
+    -fx-background-color: linear-gradient(to bottom, #1e3c72, #2a5298);
+}
+
+/* Style du panneau principal */
+Pane {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 15, 0, 0, 8);
+    -fx-padding: 20px;
+}
+
+/* Style des boutons */
+.btn_parametre {
+    -fx-background-color: linear-gradient(to right, #ff416c, #ff4b2b);
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+    -fx-padding: 12px 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(255, 75, 43, 0.5), 10, 0, 0, 4);
+    -fx-cursor: hand;
+}
+.btn_parametre:hover {
+    -fx-background-color: linear-gradient(to right, #ff4b2b, #ff416c);
+    -fx-effect: dropshadow(three-pass-box, rgba(255, 75, 43, 0.7), 12, 0, 0, 6);
+}
+
+/* Style des labels */
+Label {
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-text-fill: #333;
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+}
+
+/* Titre principal */
+.label-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 10px 0;
+}
+
+/* Style des ComboBox */
+ComboBox {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ff4b2b;
+    -fx-border-radius: 8px;
+    -fx-font-size: 14px;
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-padding: 8px 12px;
+}
+
+/* Style du DatePicker */
+DatePicker {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ff4b2b;
+    -fx-border-radius: 8px;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 12px;
+}
+
+/* Style des images */
+ImageView {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 8, 0, 0, 4);
+}
+
+/* Ajout d'une animation pour un effet moderne */
+@keyframes buttonHover {
+    from {
+        -fx-background-color: linear-gradient(to right, #ff416c, #ff4b2b);
+    }
+    to {
+        -fx-background-color: linear-gradient(to right, #ff4b2b, #ff416c);
+    }
+}
+
+.btn_parametre:hover {
+    -fx-animation: buttonHover 0.5s ease-in-out;
+}

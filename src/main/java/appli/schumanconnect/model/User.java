@@ -41,6 +41,7 @@ public class User {
         return prenom;
     }
 
+
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
@@ -76,6 +77,7 @@ public class User {
     public void setLast_log(String last_log) {
         this.last_log = last_log;
     }
+
 
     @Override
     public String toString() {

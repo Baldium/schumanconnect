@@ -59,7 +59,7 @@
         </HBox>
         <Button fx:id="connexion" mnemonicParsing="false" onAction="#login" styleClass="login-button" text="Se connecter" />
                <Button fx:id="inscription" mnemonicParsing="false" onAction="#SwitchViewRegister" styleClass="login-button" text="S'inscrire" />
-               <Button fx:id="mdp_oublie" mnemonicParsing="false" styleClass="login-button" text="Mot de passe oublié" />
+               <Button fx:id="mdp_oublie" mnemonicParsing="false" onAction="#ChangeScenePageForgotPassword" styleClass="login-button" text="Mot de passe oublié" />
         <Label fx:id="errorMessage" styleClass="error-message" />
       </VBox>
     </children>

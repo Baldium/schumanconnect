@@ -68,4 +68,9 @@ public class LoginController {
             timeline.play();
         });
     }
+
+    @FXML
+    public void ChangeScenePageForgotPassword(ActionEvent event) throws IOException{
+        ScenePage.switchView("/appli/schumanconnect/forgotPassword-view.fxml", event);
+    }
 }
