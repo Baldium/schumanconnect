@@ -193,7 +193,7 @@
                         <Font name="System Bold" size="54.0" />
                     </font>
                 </Label>
-                <ImageView fitHeight="33.0" fitWidth="24.0" layoutX="301.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="33.0" fitWidth="24.0" layoutX="181.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../assets/medias/rdv1.png" />
                     </image>
@@ -231,7 +231,7 @@
                         <Font name="Arial Bold" size="18.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="comboBox" layoutX="239.0" layoutY="277.0" prefHeight="48.0" prefWidth="226.0" promptText="Sélectionnez une heure">
+                <ComboBox fx:id="comboBox" layoutX="239.0" layoutY="277.0" prefHeight="48.0" prefWidth="243.0" promptText="Sélectionnez une heure">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="08:00" />
@@ -265,13 +265,13 @@
                         <Image url="@../assets/medias/heure.png" />
                     </image>
                 </ImageView>
-                <Button layoutX="256.0" layoutY="509.0" mnemonicParsing="false" onAction="#confirmRdv" prefHeight="26.0" prefWidth="149.0" text="Confirmer le RDV" />
+                <Button layoutX="256.0" layoutY="509.0" mnemonicParsing="false" onAction="#confirmRdv" prefHeight="49.0" prefWidth="182.0" styleClass="btn_confirmer" text="Confirmer le RDV" />
                 <Label layoutX="68.0" layoutY="395.0" prefHeight="21.0" prefWidth="226.0" text="Choix de la salle :">
                     <font>
                         <Font name="Arial Bold" size="22.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="salle" layoutX="239.0" layoutY="380.0" prefHeight="48.0" prefWidth="226.0" promptText="Sélectionnez une salle">
+                <ComboBox fx:id="comboBox1" layoutX="239.0" layoutY="380.0" prefHeight="48.0" prefWidth="226.0" promptText="Sélectionnez une salle">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="08:00" />

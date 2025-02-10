@@ -59,6 +59,8 @@ public class RdvStudentController implements Initializable {
     public void confirmRdv(ActionEvent event) throws IOException{
 
 
+
+
     }
 
     @FXML
