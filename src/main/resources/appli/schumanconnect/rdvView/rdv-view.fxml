@@ -271,30 +271,9 @@
                         <Font name="Arial Bold" size="22.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="comboBox1" layoutX="239.0" layoutY="380.0" prefHeight="48.0" prefWidth="226.0" promptText="Sélectionnez une salle">
+                <ComboBox id="salle" fx:id="salle" layoutX="239.0" layoutY="380.0" prefHeight="48.0" prefWidth="226.0" promptText="Sélectionnez une salle">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="08:00" />
-                            <String fx:value="08:30" />
-                            <String fx:value="09:00" />
-                            <String fx:value="09:30" />
-                            <String fx:value="10:00" />
-                            <String fx:value="10:30" />
-                            <String fx:value="11:00" />
-                            <String fx:value="11:30" />
-                            <String fx:value="12:00" />
-                            <String fx:value="12:30" />
-                            <String fx:value="13:00" />
-                            <String fx:value="13:30" />
-                            <String fx:value="14:00" />
-                            <String fx:value="14:30" />
-                            <String fx:value="15:00" />
-                            <String fx:value="15:30" />
-                            <String fx:value="16:00" />
-                            <String fx:value="16:30" />
-                            <String fx:value="17:00" />
-                            <String fx:value="17:30" />
-                            <String fx:value="18:00" />
                         </FXCollections>
                     </items>
                 </ComboBox>
