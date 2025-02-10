@@ -27,7 +27,6 @@ public class RdvStudentController implements Initializable {
     @FXML
     private DatePicker dateRdv;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         dateRdv.getValue();
