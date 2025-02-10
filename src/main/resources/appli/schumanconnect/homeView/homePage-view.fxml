@@ -83,7 +83,7 @@
                      <menus>
                         <Menu mnemonicParsing="false" text="Rendez-vous">
                            <items>
-                              <MenuItem mnemonicParsing="false" text="Ajouter un rendez-vous" />
+                              <MenuItem onAction="#changePageSceneRdv" mnemonicParsing="false" text="Ajouter un rendez-vous" />
                               <MenuItem mnemonicParsing="false" text="Calendrier" />
                            </items>
                            <graphic>
