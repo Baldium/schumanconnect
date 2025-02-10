@@ -1,4 +1,4 @@
-package appli.schumanconnect.controller;
+package appli.schumanconnect.controller.AdminController;
 
 import appli.schumanconnect.utils.ScenePage;
 import appli.schumanconnect.utils.UserConnectedSingleton;
@@ -7,14 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HomeAdminController {
-
+public class PanelAdminController {
     @FXML
     public void changePageSceneHome(ActionEvent event) throws IOException {
         ScenePage.switchView("/appli/schumanconnect/homeView/homePage-view.fxml", event);
@@ -78,17 +76,4 @@ public class HomeAdminController {
         stage.setScene(scene);
         stage.show();
     }
-
-    public void changePageSceneAdminPanel(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/adminView/PanelAdmin.fxml"));
-        Parent root = loader.load();
-        Button button = (Button) event.getSource();
-        Stage stage = (Stage) button.getScene().getWindow();
-        Scene scene = new Scene(root);
-
-        stage.setScene(scene);
-        stage.show();
-    }
-
-
 }

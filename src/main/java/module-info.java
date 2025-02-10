@@ -27,4 +27,6 @@ module appli.schumanconnect {
     exports appli.schumanconnect;
     exports appli.schumanconnect.utils;
     opens appli.schumanconnect.utils to javafx.fxml;
+    exports appli.schumanconnect.controller.AdminController;
+    opens appli.schumanconnect.controller.AdminController to javafx.fxml;
 }
