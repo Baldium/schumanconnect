@@ -162,7 +162,7 @@
                            <graphic>
                               <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../assets/medias/trousses.png" />
+                                    <Image url="@../assets/medias/panel_admin.png" />
                                  </image>
                               </ImageView>
                            </graphic>
