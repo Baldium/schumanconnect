@@ -20,8 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/rdv.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="appli.schumanconnect.controller.TeacherController.RdvStudentController">
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/rdv.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.TeacherController.RdvStudentController">
     <children>
         <VBox prefHeight="602.0" prefWidth="199.0">
             <children>
@@ -189,9 +188,9 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Label fx:id="labelName" layoutX="33.0" layoutY="75.0" text="Créer un Rendez-Vous">
+                <Label fx:id="labelName" layoutX="34.0" layoutY="82.0" text="Créez un rendez-vous">
                     <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="54.0" />
                     </font>
                 </Label>
                 <ImageView fitHeight="33.0" fitWidth="24.0" layoutX="301.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
@@ -210,13 +209,13 @@
                         <Cursor fx:constant="MOVE" />
                     </cursor>
                 </ImageView>
-                <Label layoutX="61.0" layoutY="165.0" prefHeight="21.0" prefWidth="226.0" text="Date du Rendez-Vous : ">
+                <Label layoutX="68.0" layoutY="181.0" prefHeight="21.0" prefWidth="226.0" text="Date du Rendez-Vous : ">
                     <font>
                         <Font name="Arial Bold" size="18.0" />
                     </font>
                 </Label>
-                <DatePicker id="dated" fx:id="dateRdv" layoutX="268.0" layoutY="163.0" />
-                <ImageView fx:id="menu_kebab11" fitHeight="24.0" fitWidth="24.0" layoutX="21.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_kebab">
+                <DatePicker id="dated" fx:id="dateRdv" layoutX="237.0" layoutY="167.0" />
+                <ImageView fx:id="menu_kebab11" fitHeight="38.0" fitWidth="33.0" layoutX="17.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_kebab">
                     <image>
                         <Image url="@../assets/medias/rdv.png" />
                     </image>
@@ -227,12 +226,12 @@
                         <Cursor fx:constant="MOVE" />
                     </cursor>
                 </ImageView>
-                <Label layoutX="61.0" layoutY="242.0" prefHeight="21.0" prefWidth="226.0" text="Heure du Rendez-Vous : ">
+                <Label layoutX="68.0" layoutY="291.0" prefHeight="21.0" prefWidth="226.0" text="Heure du Rendez-Vous : ">
                     <font>
                         <Font name="Arial Bold" size="18.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="comboBox" layoutX="304.0" layoutY="238.0" prefWidth="150.0" promptText="Sélectionnez une heure">
+                <ComboBox fx:id="comboBox" layoutX="239.0" layoutY="277.0" prefHeight="48.0" prefWidth="226.0" promptText="Sélectionnez une heure">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="08:00" />
@@ -261,18 +260,18 @@
                 </ComboBox>
 
 
-                <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="15.0" layoutY="233.0">
+                <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="14.0" layoutY="282.0">
                     <image>
                         <Image url="@../assets/medias/heure.png" />
                     </image>
                 </ImageView>
-                <Button layoutX="303.0" layoutY="331.0" mnemonicParsing="false" onAction="#confirmRdv" prefHeight="26.0" prefWidth="149.0" text="Confirmer le RDV" />
-                <Label layoutX="61.0" layoutY="280.0" prefHeight="21.0" prefWidth="226.0" text="Choix de la salle :">
+                <Button layoutX="256.0" layoutY="509.0" mnemonicParsing="false" onAction="#confirmRdv" prefHeight="26.0" prefWidth="149.0" text="Confirmer le RDV" />
+                <Label layoutX="68.0" layoutY="395.0" prefHeight="21.0" prefWidth="226.0" text="Choix de la salle :">
                     <font>
-                        <Font name="Arial Bold" size="18.0" />
+                        <Font name="Arial Bold" size="22.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="comboBox1" layoutX="301.0" layoutY="278.0" prefWidth="150.0" promptText="Sélectionnez une heure">
+                <ComboBox fx:id="salle" layoutX="239.0" layoutY="380.0" prefHeight="48.0" prefWidth="226.0" promptText="Sélectionnez une salle">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="08:00" />
@@ -299,6 +298,11 @@
                         </FXCollections>
                     </items>
                 </ComboBox>
+            <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="16.0" layoutY="388.0">
+               <image>
+                  <Image url="@../assets/medias/salle.png" />
+               </image>
+            </ImageView>
             </children></Pane>
     </children>
 </HBox>
