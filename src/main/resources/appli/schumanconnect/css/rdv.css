@@ -82,3 +82,21 @@ ImageView {
 .btn_parametre:hover {
     -fx-animation: buttonHover 0.5s ease-in-out;
 }
+
+/* Style du bouton "Confirmer le RDV" en vert */
+.btn_confirmer {
+    -fx-background-color: linear-gradient(to right, #28a745, #218838);
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-family: 'Poppins', sans-serif;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+    -fx-padding: 12px 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(40, 167, 69, 0.5), 10, 0, 0, 4);
+    -fx-cursor: hand;
+}
+
+.btn_confirmer:hover {
+    -fx-background-color: linear-gradient(to right, #218838, #28a745);
+    -fx-effect: dropshadow(three-pass-box, rgba(40, 167, 69, 0.7), 12, 0, 0, 6);
+}
