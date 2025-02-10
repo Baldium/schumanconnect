@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.ProgressBar?>
 <?import com.gluonhq.charm.glisten.control.TextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
@@ -20,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.fournitureController.CreerFournitureController">
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.fournitureController.CreerFournitureController">
     <children>
         <VBox prefHeight="602.0" prefWidth="199.0">
             <children>
@@ -45,7 +46,7 @@
                                     </cursor>
                                 </ImageView>
                             </children></Pane>
-                        <Button fx:id="btn_home" onAction="#changePageSceneHome" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="182.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="SchumanConnect" textFill="#1b47d1">
+                        <Button fx:id="btn_home" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" onAction="#changePageSceneHome" prefHeight="45.0" prefWidth="182.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="SchumanConnect" textFill="#1b47d1">
                             <graphic>
                                 <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -62,7 +63,7 @@
                                 <Menu id="btn_menu_bar" fx:id="btn_menu_bar" mnemonicParsing="false" style="-fx-text-fill: transparent;" styleClass="btn_menu_bar" text="Étudiants">
                                     <items>
                                         <MenuItem mnemonicParsing="false" text="Créer un étudiant" />
-                                        <MenuItem mnemonicParsing="false" text="Dossiers d'inscription" onAction="#changePageSceneDossierInscription" />
+                                        <MenuItem mnemonicParsing="false" onAction="#changePageSceneDossierInscription" text="Dossiers d'inscription" />
                                     </items>
                                     <graphic>
                                         <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
@@ -137,7 +138,7 @@
                                 <Blend />
                             </effect>
                         </MenuBar>
-                        <Button fx:id="btn_home1"  onAction="#logout" layoutX="23.0" layoutY="383.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="155.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="Deconnexion" textFill="#1b47d1">
+                        <Button fx:id="btn_home1" layoutX="23.0" layoutY="383.0" mnemonicParsing="false" onAction="#logout" prefHeight="42.0" prefWidth="155.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="Deconnexion" textFill="#1b47d1">
                             <graphic>
                                 <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -214,184 +215,6 @@
                         <Image url="@../assets/medias/organiser.png" />
                     </image>
                 </ImageView>
-                <Pane fx:id="panel_l" layoutX="35.0" layoutY="160.0" prefHeight="201.0" prefWidth="133.0" styleClass="panel_l" stylesheets="@../css/styles.css">
-                    <children>
-                        <Label fx:id="label_dossierr_finsih" layoutX="14.0" layoutY="20.0" prefWidth="60.0" styleClass="label_dossierr_finsih" stylesheets="@../css/styles.css" text="1124" textFill="WHITE">
-                            <font>
-                                <Font name="Helvetica Bold" size="23.0" />
-                            </font>
-                        </Label>
-                        <Label layoutX="8.0" layoutY="57.0" prefHeight="20.0" prefWidth="133.0" styleClass="label_dossierr_finsih" stylesheets="@../css/styles.css" text="Dossier terminés" textFill="WHITE">
-                            <font>
-                                <Font name="Helvetica" size="16.0" />
-                            </font>
-                        </Label>
-                        <Label layoutX="16.0" layoutY="145.0" prefHeight="20.0" prefWidth="102.0" style="-fx-text-fill: #372243;" styleClass="lbl" stylesheets="@../css/styles.css" text="Complété : 100%" textFill="#37224375">
-                            <font>
-                                <Font name="Helvetica" size="13.0" />
-                            </font>
-                        </Label>
-                        <ProgressBar fx:id="progress_bar" layoutX="12.0" layoutY="165.0" prefHeight="15.0" prefWidth="109.0" progress="1.0" style="-fx-border-color: white;" styleClass="progress_bar" stylesheets="@../css/styles.css" />
-                        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="70.0" layoutY="20.0" mnemonicParsing="false" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
-                        <ImageView fitHeight="40.0" fitWidth="51.0" layoutX="93.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../assets/medias/dossier_fini.png" />
-                            </image>
-                        </ImageView>
-                    </children></Pane>
-                <Label fx:id="label1"  layoutX="35.0" layoutY="134.0" styleClass="lbl" stylesheets="@../css/styles.css" text="Dossiers d'inscription" textFill="#837d7d">
-                    <font>
-                        <Font name="Helvetica Bold" size="13.0" />
-                    </font>
-                </Label>
-                <Pane fx:id="panel_lll" layoutX="180.0" layoutY="160.0" prefHeight="201.0" prefWidth="133.0" styleClass="panel_ll" stylesheets="@../css/styles.css">
-                    <children>
-                        <Label fx:id="label_dossierr_wait" layoutX="14.0" layoutY="20.0" prefWidth="60.0" styleClass="label_dossierr_finsih" stylesheets="@../css/styles.css" text="17" textFill="WHITE">
-                            <font>
-                                <Font name="Helvetica Bold" size="23.0" />
-                            </font>
-                        </Label>
-                        <Label layoutX="4.0" layoutY="59.0" prefHeight="20.0" prefWidth="133.0" styleClass="label_dossierr_finsih" stylesheets="@../css/styles.css" text="Dossier en cours" textFill="WHITE">
-                            <font>
-                                <Font name="Helvetica" size="15.0" />
-                            </font>
-                        </Label>
-                        <Label fx:id="dossier_cours" layoutX="16.0" layoutY="145.0" prefHeight="20.0" prefWidth="102.0" style="-fx-text-fill: #372243;" styleClass="lbl" stylesheets="@../css/styles.css" text="Complété : 47%" textFill="#37224375">
-                            <font>
-                                <Font name="Helvetica" size="13.0" />
-                            </font>
-                        </Label>
-                        <ProgressBar fx:id="progress_bar1" layoutX="12.0" layoutY="165.0" prefHeight="15.0" prefWidth="109.0" progress="0.47" style="-fx-border-color: white;" styleClass="progress_bar" stylesheets="@../css/styles.css" />
-                        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="79.0" layoutY="19.0" mnemonicParsing="false" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
-                        <ImageView fitHeight="40.0" fitWidth="51.0" layoutX="87.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../assets/medias/dossier_cours.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </Pane>
-                <Pane fx:id="panel_ll" layoutX="334.0" layoutY="162.0" prefHeight="201.0" prefWidth="133.0" styleClass="panel_ll" stylesheets="@../css/styles.css">
-                    <children>
-                        <Label fx:id="label_dossierr_wait1" layoutX="14.0" layoutY="20.0" prefWidth="60.0" styleClass="label_dossierr_finsih" stylesheets="@../css/styles.css" text="10" textFill="WHITE">
-                            <font>
-                                <Font name="Helvetica Bold" size="23.0" />
-                            </font>
-                        </Label>
-                        <Label layoutX="4.0" layoutY="59.0" prefHeight="20.0" prefWidth="133.0" styleClass="label_dossierr_finsih" stylesheets="@../css/styles.css" text="Dossier non traité" textFill="WHITE">
-                            <font>
-                                <Font name="Helvetica" size="15.0" />
-                            </font>
-                        </Label>
-                        <Label fx:id="dossier_cours1" layoutX="16.0" layoutY="145.0" prefHeight="20.0" prefWidth="102.0" style="-fx-text-fill: #372243;" styleClass="lbl" stylesheets="@../css/styles.css" text="Complété : 77%" textFill="#37224375">
-                            <font>
-                                <Font name="Helvetica" size="13.0" />
-                            </font>
-                        </Label>
-                        <ProgressBar fx:id="progress_bar11" layoutX="12.0" layoutY="165.0" prefHeight="15.0" prefWidth="109.0" progress="0.72" style="-fx-border-color: white;" styleClass="progress_bar" stylesheets="@../css/styles.css" />
-                        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="75.0" layoutY="12.0" mnemonicParsing="false" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
-                        <ImageView fitHeight="40.0" fitWidth="34.0" layoutX="94.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../assets/medias/dossier_nonTrzite.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </Pane>
-                <Pane fx:id="panel_llll" layoutX="341.0" layoutY="384.0" prefHeight="201.0" prefWidth="301.0" styleClass="panel_llll" stylesheets="@../css/styles.css">
-                    <children>
-                        <Label layoutX="18.0" layoutY="9.0" prefHeight="20.0" prefWidth="133.0" styleClass="label_dossierr_finsih" stylesheets="@../css/styles.css" text="État des stocks" textFill="WHITE">
-                            <font>
-                                <Font name="Helvetica" size="15.0" />
-                            </font>
-                        </Label>
-                        <ImageView fitHeight="85.0" fitWidth="114.0" layoutX="31.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../assets/medias/diagramme-circulaire.png" />
-                            </image>
-                        </ImageView>
-                        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="23.0" layoutY="45.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="102.0" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
-                        <ImageView fitHeight="120.0" fitWidth="94.0" layoutX="184.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../assets/medias/commandes.png" />
-                            </image>
-                        </ImageView>
-                        <Label layoutX="141.0" layoutY="9.0" prefHeight="20.0" prefWidth="155.0" styleClass="label_dossierr_finsih" stylesheets="@../css/styles.css" text="Suivi des commandes" textFill="WHITE">
-                            <font>
-                                <Font name="Helvetica" size="15.0" />
-                            </font>
-                        </Label>
-                        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="180.0" layoutY="29.0" mnemonicParsing="false" prefHeight="144.0" prefWidth="102.0" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
-                    </children>
-                </Pane>
-                <Label fx:id="label11" layoutX="347.0" layoutY="363.0" styleClass="lbl" stylesheets="@../css/styles.css" text="Gestion des stocks" textFill="#837d7d">
-                    <font>
-                        <Font name="Helvetica Bold" size="13.0" />
-                    </font>
-                </Label>
-                <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="467.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../assets/medias/trousses.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="174.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../assets/medias/dossier.png" />
-                    </image>
-                </ImageView>
-                <Pane fx:id="panel_rdv" layoutX="35.0" layoutY="384.0" prefHeight="201.0" prefWidth="133.0" styleClass="panel_rdv" stylesheets="@../css/styles.css">
-                    <children>
-                        <Label fx:id="label_dossierr_wait2" layoutX="14.0" layoutY="20.0" prefWidth="60.0" styleClass="label_dossierr_finsih" stylesheets="@../css/styles.css" text="3" textFill="WHITE">
-                            <font>
-                                <Font name="Helvetica Bold" size="23.0" />
-                            </font>
-                        </Label>
-                        <Label layoutX="4.0" layoutY="59.0" prefHeight="20.0" prefWidth="133.0" styleClass="label_dossierr_finsih" stylesheets="@../css/styles.css" text="Salles disponibles" textFill="WHITE">
-                            <font>
-                                <Font name="Helvetica" size="15.0" />
-                            </font>
-                        </Label>
-                        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="79.0" layoutY="19.0" mnemonicParsing="false" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
-                        <ImageView fitHeight="40.0" fitWidth="51.0" layoutX="87.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../assets/medias/salle.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </Pane>
-                <Pane fx:id="panel_rdv2" layoutX="180.0" layoutY="384.0" prefHeight="201.0" prefWidth="133.0" styleClass="panel_rdv2" stylesheets="@../css/styles.css">
-                    <children>
-                        <Label fx:id="label_dossierr_wait3" layoutX="14.0" layoutY="20.0" prefWidth="60.0" styleClass="label_dossierr_finsih" stylesheets="@../css/styles.css" text="2" textFill="WHITE">
-                            <font>
-                                <Font name="Helvetica Bold" size="23.0" />
-                            </font>
-                        </Label>
-                        <Label layoutX="4.0" layoutY="59.0" prefHeight="20.0" prefWidth="133.0" styleClass="label_dossierr_finsih" stylesheets="@../css/styles.css" text="Prochain RDV" textFill="WHITE">
-                            <font>
-                                <Font name="Helvetica" size="15.0" />
-                            </font>
-                        </Label>
-                        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="79.0" layoutY="19.0" mnemonicParsing="false" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
-                        <ImageView fitHeight="40.0" fitWidth="51.0" layoutX="87.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../assets/medias/reunion.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </Pane>
-                <Label fx:id="label111" layoutX="31.0" layoutY="363.0" styleClass="lbl" stylesheets="@../css/styles.css" text="Rendez-vous" textFill="#837d7d">
-                    <font>
-                        <Font name="Helvetica Bold" size="13.0" />
-                    </font>
-                </Label>
-                <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="116.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../assets/medias/calendrier.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="128.0" fitWidth="127.0" layoutX="503.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../assets/medias/rh.png" />
-                    </image>
-                </ImageView>
                 <ImageView fx:id="menu_kebab1" fitHeight="40.0" fitWidth="45.0" layoutX="590.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_kebab">
                     <image>
                         <Image url="@../assets/medias/menu.png" />
@@ -403,6 +226,13 @@
                         <Cursor fx:constant="MOVE" />
                     </cursor>
                 </ImageView>
+            <VBox layoutX="14.0" layoutY="144.0" prefHeight="113.0" prefWidth="267.0">
+               <children>
+                  <ComboBox fx:id="toolSelector" prefWidth="150.0" />
+                  <Spinner fx:id="quantitySpinner" />
+               </children>
+            </VBox>
+            <Button fx:id="addButton" layoutX="59.0" layoutY="420.0" mnemonicParsing="false" text="ajouter une fourniture" />
             </children></Pane>
     </children>
 </HBox>
