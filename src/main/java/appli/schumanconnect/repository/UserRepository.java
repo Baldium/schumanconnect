@@ -33,8 +33,12 @@ public class UserRepository {
                     role = Role.SECRETAIRE;
                 } else if (Objects.equals(roleString, "GESTIONNAIRE")) {
                     role = Role.GESTIONNAIRE;
-                } else {
+                } else if (Objects.equals(roleString, "ADMIN")) {
                     role = Role.ADMIN;
+                }
+                else
+                {
+                    throw new Exception();
                 }
 
                 users.add(new User(recup.getInt("id_user"), recup.getString("nom"), recup.getString("prenom"), recup.getString("email"), recup.getString("mdp"), role, recup.getString("derniere_connexion")));
