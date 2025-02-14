@@ -32,7 +32,7 @@ public class UserRepository {
                 } else if (Objects.equals(roleString, "SECRETAIRE")) {
                     role = Role.SECRETAIRE;
                 } else if (Objects.equals(roleString, "GESTIONNAIRE")) {
-                    role = Role.SECRETAIRE;
+                    role = Role.GESTIONNAIRE;
                 } else {
                     role = Role.ADMIN;
                 }
