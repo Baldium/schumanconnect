@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.TextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.AdminController.AddAdminController">
+    <children>
+        <VBox prefHeight="602.0" prefWidth="199.0">
+            <children>
+                <AnchorPane fx:id="c" prefHeight="602.0" prefWidth="248.0" styleClass="side_ankerpane" stylesheets="@../css/styles.css">
+                    <children>
+                        <Pane fx:id="inner_pane" layoutX="13.0" layoutY="14.0" prefHeight="64.0" prefWidth="176.0" styleClass="inner-pane" stylesheets="@../css/styles.css">
+                            <children>
+                                <ImageView fitHeight="78.0" fitWidth="133.0" layoutX="10.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../assets/medias/Logo_Schuman_Connect.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fx:id="menu_kebab" fitHeight="42.0" fitWidth="34.0" layoutX="130.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_kebab">
+                                    <image>
+                                        <Image url="@../assets/medias/menu_kebab.png" />
+                                    </image>
+                                    <effect>
+                                        <Blend opacity="0.18" />
+                                    </effect>
+                                    <cursor>
+                                        <Cursor fx:constant="MOVE" />
+                                    </cursor>
+                                </ImageView>
+                            </children></Pane>
+                        <Button fx:id="btn_home" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" onAction="#changePageSceneHome" prefHeight="45.0" prefWidth="182.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="SchumanConnect" textFill="#1b47d1">
+                            <graphic>
+                                <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../assets/medias/home_icone.jpg" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="Helvetica Bold" size="13.0" />
+                            </font>
+                        </Button>
+                        <MenuBar layoutX="9.0" layoutY="162.0" prefHeight="45.0" prefWidth="165.0" style="-fx-background-color: transparent;" styleClass="btn_menu_bar" stylesheets="@../css/styles.css">
+                            <menus>
+                                <Menu id="btn_menu_bar" fx:id="btn_menu_bar" mnemonicParsing="false" style="-fx-text-fill: transparent;" styleClass="btn_menu_bar" text="Étudiants">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#changePageSceneAddStudent" text="Créer un étudiant" />
+                                        <MenuItem mnemonicParsing="false" onAction="#changePageSceneDossierInscription" text="Dossiers d'inscription" />
+                                        <MenuItem mnemonicParsing="false" onAction="#changePageSceneFichesEtudiantes" text="Fiches étudiantes" />
+
+                                    </items>
+                                    <graphic>
+                                        <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../assets/medias/icone_students.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Menu>
+                            </menus>
+                            <effect>
+                                <Blend />
+                            </effect>
+                        </MenuBar>
+                        <MenuBar fx:id="btn_menu_bar1" layoutX="7.0" layoutY="209.0" prefHeight="45.0" prefWidth="187.0" styleClass="btn_menu_bar" stylesheets="@../css/styles.css">
+                            <menus>
+                                <Menu mnemonicParsing="false" text="Rendez-vous">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Ajouter un rendez-vous" />
+                                        <MenuItem mnemonicParsing="false" text="Calendrier" />
+                                    </items>
+                                    <graphic>
+                                        <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../assets/medias/rdv.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Menu>
+                            </menus>
+                            <effect>
+                                <Blend />
+                            </effect>
+                        </MenuBar>
+                        <MenuBar fx:id="btn_menu_bar2" layoutX="11.0" layoutY="256.0" prefHeight="45.0" prefWidth="176.0" styleClass="btn_menu_bar" stylesheets="@../css/styles.css">
+                            <menus>
+                                <Menu mnemonicParsing="false" style="-fx-text-fill: #FFFFFF;" styleClass="-fx-text-fill: #FFFFFF;" text="Fournitures">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Demander des fournitures" />
+                                        <MenuItem mnemonicParsing="false" text="Gestion des stocks" />
+                                    </items>
+                                    <graphic>
+                                        <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../assets/medias/fourniture.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Menu>
+                            </menus>
+                            <effect>
+                                <Blend />
+                            </effect>
+                        </MenuBar>
+                        <MenuBar fx:id="btn_menu_bar21" layoutX="11.0" layoutY="308.0" prefHeight="45.0" prefWidth="165.0" styleClass="btn_menu_bar" stylesheets="@../css/styles.css">
+                            <menus>
+                                <Menu mnemonicParsing="false" style="-fx-text-fill: #FFFFFF;" styleClass="-fx-text-fill: #FFFFFF;" text="Historique">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Historique" />
+                                        <MenuItem mnemonicParsing="false" text="Journal des connexions" />
+                                    </items>
+                                    <graphic>
+                                        <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../assets/medias/history.jpg" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Menu>
+                            </menus>
+                            <effect>
+                                <Blend />
+                            </effect>
+                        </MenuBar>
+                        <Button fx:id="btn_home1" layoutX="24.0" layoutY="437.0" mnemonicParsing="false" onAction="#logout" prefHeight="42.0" prefWidth="155.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="Deconnexion" textFill="#1b47d1">
+                            <graphic>
+                                <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../assets/medias/logout.jpg" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="Helvetica Bold" size="13.0" />
+                            </font>
+                        </Button>
+                        <ImageView fitHeight="114.0" fitWidth="102.0" layoutX="47.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/medias/prof.jpg" />
+                            </image>
+                        </ImageView>
+                        <MenuBar fx:id="btn_menu_bar211" layoutX="15.0" layoutY="371.0" prefHeight="45.0" prefWidth="165.0" styleClass="btn_menu_bar" stylesheets="@../css/styles.css">
+                            <menus>
+                                <Menu mnemonicParsing="false" style="-fx-text-fill: #FFFFFF;" styleClass="-fx-text-fill: #FFFFFF;" text="Admin">
+                                    <graphic>
+                                        <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../assets/medias/trousses.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#changePageSceneAdmin" text="Panel Admin" />
+                                    </items>
+                                </Menu>
+                            </menus>
+                            <effect>
+                                <Blend />
+                            </effect>
+                        </MenuBar>
+                    </children>
+                    <effect>
+                        <Glow />
+                    </effect></AnchorPane>
+            </children>
+        </VBox>
+        <Pane prefHeight="602.0" prefWidth="664.0">
+            <children>
+                <Pane layoutX="-1.0" layoutY="8.0" prefHeight="55.0" prefWidth="664.0">
+                    <children>
+                        <TextField fx:id="txt_search" blendMode="DARKEN" cache="true" depthTest="ENABLE" focusTraversable="false" layoutX="374.0" layoutY="6.0" promptText="Rechercher..." styleClass="txt_search" stylesheets="@../css/styles.css">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <effect>
+                                <DropShadow />
+                            </effect></TextField>
+                        <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="359.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/medias/search_bar.png" />
+                            </image>
+                        </ImageView>
+                        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="540.0" layoutY="12.0" mnemonicParsing="false" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
+                        <ImageView fitHeight="33.0" fitWidth="24.0" layoutX="555.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/medias/parametre_icone.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="604.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/medias/profil.png" />
+                            </image>
+                        </ImageView>
+                        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="594.0" layoutY="8.0" minWidth="53.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="53.0" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
+                        <Label layoutX="86.0" layoutY="10.0" text="SchumanConnect">
+                            <font>
+                                <Font name="Avenir Black Oblique" size="25.0" />
+                            </font></Label>
+                        <ImageView fitHeight="64.0" fitWidth="69.0" layoutX="14.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../assets/medias/Logo_Schuman_Connect.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+                <Label fx:id="labelName" layoutX="33.0" layoutY="75.0" text="Panel Admin" textFill="RED">
+                    <font>
+                        <Font name="Helvetica Bold" size="24.0" />
+                    </font>
+                </Label>
+                <Label layoutX="34.0" layoutY="104.0" text="Gérez, organisez, avancez !" textFill="#301f9a">
+                    <font>
+                        <Font name="Helvetica" size="13.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="33.0" fitWidth="24.0" layoutX="196.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/medias/organiser.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="menu_kebab1" fitHeight="40.0" fitWidth="45.0" layoutX="590.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_kebab">
+                    <image>
+                        <Image url="@../assets/medias/menu.png" />
+                    </image>
+                    <effect>
+                        <Blend opacity="0.18" />
+                    </effect>
+                    <cursor>
+                        <Cursor fx:constant="MOVE" />
+                    </cursor>
+                </ImageView>
+            </children></Pane>
+    </children>
+</HBox>
