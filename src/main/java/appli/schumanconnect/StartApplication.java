@@ -1,5 +1,6 @@
 package appli.schumanconnect;
 
+import appli.schumanconnect.utils.ScenePage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,3 +22,5 @@ public class StartApplication extends Application {
         launch();
     }
 }
+
+
