@@ -104,6 +104,7 @@
                         <Menu mnemonicParsing="false" style="-fx-text-fill: #FFFFFF;" styleClass="-fx-text-fill: #FFFFFF;" text="Fournitures">
                            <items>
                               <MenuItem mnemonicParsing="false" onAction="#changePageSceneAddFurniture" text="Demander des fournitures" />
+                              <MenuItem mnemonicParsing="false" onAction="#changePageSceneManagementFurniture" text="Gérer les demandes de fournitures" />
                               <MenuItem mnemonicParsing="false" text="Gestion des stocks" />
                            </items>
                            <graphic>
