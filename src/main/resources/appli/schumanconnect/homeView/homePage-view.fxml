@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.HomeController">
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.HomeController">
    <children>
       <VBox prefHeight="602.0" prefWidth="199.0">
          <children>
@@ -83,7 +83,7 @@
                      <menus>
                         <Menu mnemonicParsing="false" text="Rendez-vous">
                            <items>
-                              <MenuItem onAction="#changePageSceneRdv" mnemonicParsing="false" text="Ajouter un rendez-vous" />
+                              <MenuItem mnemonicParsing="false" onAction="#changePageSceneRdv" text="Ajouter un rendez-vous" />
                               <MenuItem mnemonicParsing="false" text="Calendrier" />
                            </items>
                            <graphic>
@@ -103,7 +103,7 @@
                      <menus>
                         <Menu mnemonicParsing="false" style="-fx-text-fill: #FFFFFF;" styleClass="-fx-text-fill: #FFFFFF;" text="Fournitures">
                            <items>
-                              <MenuItem mnemonicParsing="false" text="Demander des fournitures" />
+                              <MenuItem mnemonicParsing="false" onAction="#changePageSceneAddFurniture" text="Demander des fournitures" />
                               <MenuItem mnemonicParsing="false" text="Gestion des stocks" />
                            </items>
                            <graphic>

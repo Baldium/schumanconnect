@@ -172,6 +172,17 @@ public class HomeController implements Initializable {
         stage.show();
     }
 
+    public void changePageSceneAddFurniture(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/furnitureView/createFurniture-view.fxml"));
+        Parent root = loader.load();
+        MenuItem menuItem = (MenuItem) event.getSource();
+        Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
 
 
 

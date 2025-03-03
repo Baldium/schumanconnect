@@ -21,6 +21,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.fournitureController.CreerFournitureController">
     <children>
         <VBox prefHeight="602.0" prefWidth="199.0">
@@ -226,12 +228,20 @@
                         <Cursor fx:constant="MOVE" />
                     </cursor>
                 </ImageView>
-            <VBox layoutX="14.0" layoutY="144.0" prefHeight="113.0" prefWidth="267.0">
-               <children>
-                  <ComboBox fx:id="toolSelector" prefWidth="150.0" />
-                  <Spinner fx:id="quantitySpinner" />
-               </children>
-            </VBox>
+                <VBox layoutX="14.0" layoutY="144.0" prefHeight="113.0" prefWidth="267.0">
+                    <children>
+                        <ComboBox fx:id="toolSelector" prefWidth="150.0">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Outil 1" />
+                                    <String fx:value="Outil 2" />
+                                    <String fx:value="Outil 3" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                        <Spinner fx:id="quantitySpinner" prefWidth="150.0" />
+                    </children>
+                </VBox>
             <Button fx:id="addButton" layoutX="59.0" layoutY="420.0" mnemonicParsing="false" text="ajouter une fourniture" />
             </children></Pane>
     </children>
