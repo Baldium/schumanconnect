@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.HomeController">
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.HomeController">
    <children>
       <VBox prefHeight="602.0" prefWidth="199.0">
          <children>
@@ -122,10 +122,10 @@
                   </MenuBar>
                   <MenuBar fx:id="btn_menu_bar21" layoutX="11.0" layoutY="308.0" prefHeight="45.0" prefWidth="165.0" styleClass="btn_menu_bar" stylesheets="@../css/styles.css">
                      <menus>
-                        <Menu mnemonicParsing="false" style="-fx-text-fill: #FFFFFF;" styleClass="-fx-text-fill: #FFFFFF;" text="Historique">
+                        <Menu mnemonicParsing="false" style="-fx-text-fill: #FFFFFF;" styleClass="-fx-text-fill: #FFFFFF;" text="test E5">
                            <items>
                               <MenuItem mnemonicParsing="false" text="Historique" />
-                              <MenuItem mnemonicParsing="false" text="Journal des connexions" />
+                              <MenuItem mnemonicParsing="false" onAction="#changePageSceneE5" text="Page E5" />
                            </items>
                            <graphic>
                               <ImageView fitHeight="34.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
