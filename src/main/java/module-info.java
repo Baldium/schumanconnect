@@ -16,9 +16,11 @@ module appli.schumanconnect {
     exports appli.schumanconnect.controller;  // Export du package controller
     exports appli.schumanconnect.controller.SecretaryController;
     exports appli.schumanconnect.controller.TeacherController;
+    exports appli.schumanconnect.controller.fournitureController;
     opens appli.schumanconnect.controller.SecretaryController to javafx.fxml;
     opens appli.schumanconnect.controller to javafx.fxml;
     opens appli.schumanconnect.controller.TeacherController to javafx.fxml;
+    opens appli.schumanconnect.controller.fournitureController to javafx.fxml;
 
     // Ouvrir le package appli.schumanconnect.model à javafx.base
     opens appli.schumanconnect.model to javafx.base;

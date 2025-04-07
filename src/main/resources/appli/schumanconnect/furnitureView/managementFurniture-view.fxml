@@ -4,12 +4,10 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
@@ -21,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.fournitureController.CreerFournitureController">
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.fournitureController.ManagementFournitureController">
     <children>
         <VBox prefHeight="602.0" prefWidth="199.0">
             <children>
@@ -226,13 +224,6 @@
                         <Cursor fx:constant="MOVE" />
                     </cursor>
                 </ImageView>
-            <VBox layoutX="14.0" layoutY="144.0" prefHeight="113.0" prefWidth="267.0">
-               <children>
-                  <ComboBox fx:id="toolSelector" prefWidth="150.0" />
-                  <Spinner fx:id="quantitySpinner" />
-               </children>
-            </VBox>
-            <Button fx:id="addButton" layoutX="59.0" layoutY="420.0" mnemonicParsing="false" text="ajouter une fourniture" />
             </children></Pane>
     </children>
 </HBox>
