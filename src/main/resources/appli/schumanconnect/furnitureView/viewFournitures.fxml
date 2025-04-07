@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.fournitureController.ManagementFournitureController">
+    <TableView fx:id="fournitureTable">
+        <columns>
+            <TableColumn fx:id="fournisseurColumn" text="Fournisseur" />
+            <TableColumn fx:id="outilColumn" text="Outil" />
+            <TableColumn fx:id="quantiteColumn" text="Quantité" />
+        </columns>
+    </TableView>
+</VBox>
