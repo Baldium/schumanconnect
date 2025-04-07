@@ -4,55 +4,63 @@ import appli.schumanconnect.utils.ScenePage;
 import appli.schumanconnect.utils.UserConnectedSingleton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
-
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CreerFournitureController {
 
     @FXML
-    private VBox supplyContainer; // Conteneur pour les fournitures
+    private VBox supplyContainer;
 
     @FXML
-    private Button addButton; // Bouton pour ajouter une fourniture
+    private Button addButton;
+
+    @FXML
+    private Button saveButton;
+
+    @FXML
+    private ComboBox<String> supplierSelector;
+
+    @FXML
+    private Spinner<Integer> quantitySpinner;
 
     @FXML
     public void initialize() {
         addButton.setOnAction(event -> addSupplyRow());
+        saveButton.setOnAction(event -> saveSupplyRequest());
+        loadSuppliers();
+        configureSpinner();
     }
 
-    private void addSupplyRow() {
-        // Créer un ComboBox pour les outils
-        ComboBox<String> toolSelector = new ComboBox<>();
-        toolSelector.getItems().addAll("Crayon", "Gomme", "Pinceau");
-        toolSelector.setValue("Crayon"); // Valeur par défaut
-
-        // Créer un Spinner pour la quantité
-        Spinner<Integer> quantitySpinner = new Spinner<>();
+    private void configureSpinner() {
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, 1);
         quantitySpinner.setValueFactory(valueFactory);
+    }
 
-        // Créer un label pour afficher la sélection
+    @FXML
+    private void addSupplyRow() {
+        ComboBox<String> toolSelector = new ComboBox<>();
+        toolSelector.getItems().addAll("Crayon", "Gomme", "Stylo");
+        toolSelector.setValue("Crayon");
+
+        Spinner<Integer> newQuantitySpinner = new Spinner<>();
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, 1);
+        newQuantitySpinner.setValueFactory(valueFactory);
+
         Label selectionLabel = new Label();
-        toolSelector.setOnAction(event -> updateSelection(toolSelector, quantitySpinner, selectionLabel));
-        quantitySpinner.valueProperty().addListener((obs, oldValue, newValue) -> updateSelection(toolSelector, quantitySpinner, selectionLabel));
+        toolSelector.setOnAction(event -> updateSelection(toolSelector, newQuantitySpinner, selectionLabel));
+        newQuantitySpinner.valueProperty().addListener((obs, oldValue, newValue) -> updateSelection(toolSelector, newQuantitySpinner, selectionLabel));
 
-        // Ajouter les éléments à une ligne horizontale (HBox)
-        javafx.scene.layout.HBox row = new javafx.scene.layout.HBox(10, toolSelector, quantitySpinner, selectionLabel);
+        javafx.scene.layout.HBox row = new javafx.scene.layout.HBox(10, toolSelector, newQuantitySpinner, selectionLabel);
         supplyContainer.getChildren().add(row);
     }
 
@@ -62,9 +70,64 @@ public class CreerFournitureController {
         selectionLabel.setText("Outil: " + tool + " | Quantité: " + quantity);
     }
 
+    private void loadSuppliers() {
+        List<String> suppliers = new ArrayList<>();
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/schumanconnect", "root", "");
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT nom FROM fournisseurs")) {
+
+            while (resultSet.next()) {
+                suppliers.add(resultSet.getString("nom"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        supplierSelector.getItems().addAll(suppliers);
+        System.out.println("Fournisseurs chargés : " + suppliers); // Vérifiez les données chargées
+    }
+
+    @FXML
+    private void saveSupplyRequest() {
+        String fournisseur = supplierSelector.getValue();
+        if (fournisseur == null || fournisseur.isEmpty()) {
+            System.out.println("Aucun fournisseur sélectionné.");
+            return;
+        }
+
+        for (javafx.scene.Node node : supplyContainer.getChildren()) {
+            if (node instanceof javafx.scene.layout.HBox) {
+                javafx.scene.layout.HBox row = (javafx.scene.layout.HBox) node;
+                ComboBox<String> toolSelector = (ComboBox<String>) row.getChildren().get(0);
+                Spinner<Integer> quantitySpinner = (Spinner<Integer>) row.getChildren().get(1);
+                String outil = toolSelector.getValue();
+                int quantite = quantitySpinner.getValue();
+
+                System.out.println("Enregistrement de la demande : Fournisseur = " + fournisseur + ", Outil = " + outil + ", Quantité = " + quantite);
+
+                try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/schumanconnect", "root", "");
+                     PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO demandes_fournitures (fournisseur, outil, quantite) VALUES (?, ?, ?)")) {
+                    preparedStatement.setString(1, fournisseur);
+                    preparedStatement.setString(2, outil);
+                    preparedStatement.setInt(3, quantite);
+                    int rowsAffected = preparedStatement.executeUpdate();
+                    System.out.println("Lignes affectées : " + rowsAffected);
+                } catch (Exception e) {
+                    System.out.println("Erreur lors de l'enregistrement de la demande : " + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        }
+        System.out.println("Demandes de fournitures enregistrées.");
+    }
+
     @FXML
     public void changePageSceneHome(ActionEvent event) throws IOException {
         ScenePage.switchView("/appli/schumanconnect/homeView/homePage-view.fxml", event);
+    }
+
+    @FXML
+    public void changePageSceneDossierInscription(ActionEvent event) throws IOException {
+        ScenePage.switchView("/appli/schumanconnect/dossierInscriptionView/dossierInscription-view.fxml", event);
     }
 
     @FXML
@@ -73,82 +136,5 @@ public class CreerFournitureController {
         ScenePage.switchView("/appli/schumanconnect/login-view.fxml", event);
     }
 
-    @FXML
-    public void changePageSceneDossierInscription(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/secretaryView/allStudents.fxml"));
-        Parent root = loader.load();
-        MenuItem menuItem = (MenuItem) event.getSource();
-        Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
-        Scene scene = new Scene(root);
-
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void changePageSceneFichesEtudiantes(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/secretaryView/allFichesStudents-view.fxml"));
-        Parent root = loader.load();
-        MenuItem menuItem = (MenuItem) event.getSource();
-        Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
-        Scene scene = new Scene(root);
-
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void changePageSceneDossierInscriptionButton(ActionEvent event) throws IOException{
-        ScenePage.switchView("/appli/schumanconnect/secretaryView/allStudents.fxml",event);
-    }
-
-    @FXML
-    public void changePageSceneAddStudent(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/secretaryView/addStudents.fxml"));
-        Parent root = loader.load();
-        MenuItem menuItem = (MenuItem) event.getSource();
-        Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
-        Scene scene = new Scene(root);
-
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void changePageSceneAdmin(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/adminView/home-view.fxml"));
-        Parent root = loader.load();
-        MenuItem menuItem = (MenuItem) event.getSource();
-        Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
-        Scene scene = new Scene(root);
-
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void changePageSceneRdv(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/rdvView/dossierEtudiant-view.fxml"));
-        Parent root = loader.load();
-        MenuItem menuItem = (MenuItem) event.getSource();
-        Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
-        Scene scene = new Scene(root);
-
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void changePageSceneAddFurniture(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/appli/schumanconnect/furnitureView/createFurniture-view.fxml"));
-        Parent root = loader.load();
-        MenuItem menuItem = (MenuItem) event.getSource();
-        Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
-        Scene scene = new Scene(root);
-
-        stage.setScene(scene);
-        stage.show();
-    }
-
-
-
+    // Autres méthodes de changement de page...
 }

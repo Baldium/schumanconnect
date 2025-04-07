@@ -20,9 +20,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
+
 <HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="861.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.schumanconnect.controller.fournitureController.CreerFournitureController">
     <children>
         <VBox prefHeight="602.0" prefWidth="199.0">
@@ -47,7 +47,8 @@
                                         <Cursor fx:constant="MOVE" />
                                     </cursor>
                                 </ImageView>
-                            </children></Pane>
+                            </children>
+                        </Pane>
                         <Button fx:id="btn_home" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" onAction="#changePageSceneHome" prefHeight="45.0" prefWidth="182.0" styleClass="btn_home" stylesheets="@../css/styles.css" text="SchumanConnect" textFill="#1b47d1">
                             <graphic>
                                 <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
@@ -160,49 +161,13 @@
                     </children>
                     <effect>
                         <Glow />
-                    </effect></AnchorPane>
+                    </effect>
+                </AnchorPane>
             </children>
         </VBox>
         <Pane prefHeight="602.0" prefWidth="664.0">
             <children>
-                <Pane layoutX="-1.0" layoutY="8.0" prefHeight="55.0" prefWidth="664.0">
-                    <children>
-                        <TextField fx:id="txt_search" blendMode="DARKEN" cache="true" depthTest="ENABLE" focusTraversable="false" layoutX="374.0" layoutY="6.0" promptText="Rechercher..." styleClass="txt_search" stylesheets="@../css/styles.css">
-                            <opaqueInsets>
-                                <Insets />
-                            </opaqueInsets>
-                            <effect>
-                                <DropShadow />
-                            </effect></TextField>
-                        <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="359.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../assets/medias/search_bar.png" />
-                            </image>
-                        </ImageView>
-                        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="540.0" layoutY="12.0" mnemonicParsing="false" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
-                        <ImageView fitHeight="33.0" fitWidth="24.0" layoutX="555.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../assets/medias/parametre_icone.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="604.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../assets/medias/profil.png" />
-                            </image>
-                        </ImageView>
-                        <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="594.0" layoutY="8.0" minWidth="53.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="53.0" styleClass="btn_parametre" stylesheets="@../css/styles.css" text="Button" textFill="WHITE" />
-                        <Label layoutX="86.0" layoutY="10.0" text="SchumanConnect">
-                            <font>
-                                <Font name="Avenir Black Oblique" size="25.0" />
-                            </font></Label>
-                        <ImageView fitHeight="78.0" fitWidth="102.0" layoutX="8.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../assets/medias/Logo_Schuman_Connect.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </Pane>
-                <Label fx:id="labelName" layoutX="33.0" layoutY="75.0" text="Bienvenue !">
+                <Label layoutX="33.0" layoutY="75.0" text="Bienvenue !">
                     <font>
                         <Font name="Helvetica Bold" size="24.0" />
                     </font>
@@ -212,37 +177,24 @@
                         <Font name="Helvetica" size="13.0" />
                     </font>
                 </Label>
-                <ImageView fitHeight="33.0" fitWidth="24.0" layoutX="196.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../assets/medias/organiser.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="menu_kebab1" fitHeight="40.0" fitWidth="45.0" layoutX="590.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_kebab">
-                    <image>
-                        <Image url="@../assets/medias/menu.png" />
-                    </image>
-                    <effect>
-                        <Blend opacity="0.18" />
-                    </effect>
-                    <cursor>
-                        <Cursor fx:constant="MOVE" />
-                    </cursor>
-                </ImageView>
-                <VBox layoutX="14.0" layoutY="144.0" prefHeight="113.0" prefWidth="267.0">
+                <VBox fx:id="supplyContainer" layoutX="14.0" layoutY="144.0" prefHeight="113.0" prefWidth="267.0">
                     <children>
+                        <ComboBox fx:id="supplierSelector" prefWidth="150.0" promptText="Choisir un fournisseur" />
                         <ComboBox fx:id="toolSelector" prefWidth="150.0">
                             <items>
                                 <FXCollections fx:factory="observableArrayList">
-                                    <String fx:value="Outil 1" />
-                                    <String fx:value="Outil 2" />
-                                    <String fx:value="Outil 3" />
+                                    <String fx:value="Crayon" />
+                                    <String fx:value="Gomme" />
+                                    <String fx:value="Stylo" />
                                 </FXCollections>
                             </items>
                         </ComboBox>
                         <Spinner fx:id="quantitySpinner" prefWidth="150.0" />
                     </children>
                 </VBox>
-            <Button fx:id="addButton" layoutX="59.0" layoutY="420.0" mnemonicParsing="false" text="ajouter une fourniture" />
-            </children></Pane>
+                <Button fx:id="addButton" layoutX="59.0" layoutY="420.0" mnemonicParsing="false" onAction="#addSupplyRow" text="ajouter une fourniture" />
+            <Button fx:id="saveButton" layoutX="200.0" layoutY="420.0" mnemonicParsing="false" onAction="#saveSupplyRequest" text="Enregistrer" />
+            </children>
+        </Pane>
     </children>
 </HBox>
